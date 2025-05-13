@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.vo;
+package com.evalia.backEntrevistasInformes.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity(name ="Pregunta_personalizada")
-public class PreguntaPersonalizadaVO {
+public class PreguntaPersonalizadaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class PreguntaPersonalizadaVO {
 
     @ManyToOne
     @JoinColumn(name = "idEntrevista")
-    private EntrevistaVO entrevista;
+    private EntrevistaEntity entrevista;
 
     private String texto;
 }

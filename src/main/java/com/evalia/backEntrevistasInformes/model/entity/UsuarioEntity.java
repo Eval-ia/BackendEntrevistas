@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.vo;
+package com.evalia.backEntrevistasInformes.model.entity;
 
 import com.evalia.backEntrevistasInformes.model.Rol;
 
@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity(name ="Usuarios")
-public class UsuarioVO {
+public class UsuarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

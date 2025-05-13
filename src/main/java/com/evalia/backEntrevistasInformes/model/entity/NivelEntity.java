@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.vo;
+package com.evalia.backEntrevistasInformes.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,12 +7,13 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity(name = "Categoria")
-public class CategoriaVO {
+@Entity(name = "Nivel")
+public class NivelEntity {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCategoria;
+    Long idNivel;
 
     String nombre;
 }
