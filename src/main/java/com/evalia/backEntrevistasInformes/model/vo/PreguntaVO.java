@@ -1,6 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.pregunta;
-
-import com.evalia.backEntrevistasInformes.model.puesto.PuestoTrabajoVO;
+package com.evalia.backEntrevistasInformes.model.vo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.usuario;
+package com.evalia.backEntrevistasInformes.model.vo;
 
 import com.evalia.backEntrevistasInformes.model.Rol;
 

@@ -1,7 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.puesto;
-
-import com.evalia.backEntrevistasInformes.model.categoria.CategoriaVO;
-import com.evalia.backEntrevistasInformes.model.nivel.NivelVO;
+package com.evalia.backEntrevistasInformes.model.vo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
