@@ -11,26 +11,26 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import com.evalia.backEntrevistasInformes.model.Categoria;
-import com.evalia.backEntrevistasInformes.model.NivelTecnologia;
-import com.evalia.backEntrevistasInformes.model.UsuarioVO;
-import com.evalia.backEntrevistasInformes.model.ia.ChatResponseDTO;
-import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
-import com.evalia.backEntrevistasInformes.repository.NivelTecnologiaRepository;
-import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
+import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
+import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
+import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
+import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
+import com.evalia.backEntrevistasInformes.repository.nivelRepository;
+import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioService {
 
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private categoriaRepository categoriaRepository;
 
     @Autowired
-    private NivelTecnologiaRepository nivelTecnologiaRepository;
+    private nivelRepository nivelTecnologiaRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private usuarioRepository usuarioRepository;
 
     @Autowired
     private ChatClient chatClient;
@@ -47,17 +47,17 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
     @Override
     public ChatResponseDTO recomendarUsuariosPorCategoriaYNivel(Long idCategoria, Long idNivel) {
         try {
-            Categoria categoria = categoriaRepository.findById(idCategoria)
+            CategoriaEntity categoria = categoriaRepository.findById(idCategoria)
                 .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
 
-            NivelTecnologia nivel = nivelTecnologiaRepository.findById(idNivel)
+            NivelEntity nivel = nivelTecnologiaRepository.findById(idNivel)
                 .orElseThrow(() -> new RuntimeException("Nivel no encontrado"));
 
-            List<UsuarioVO> usuariosConInforme = usuarioRepository.findByInformeIsNotNull();
+            List<UsuarioEntity> usuariosConInforme = usuarioRepository.findByInformeIsNotNull();
 
             List<Map<String, Object>> informes = usuariosConInforme.stream().map(usuario -> {
                 Map<String, Object> map = new HashMap<>();
-                map.put("id", usuario.getId());
+                map.put("id", usuario.getIdUsuario());
                 map.put("informe", usuario.getInforme());
                 return map;
             }).toList();
@@ -81,11 +81,11 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
     @Override
     public ChatResponseDTO recomendarUsuariosPorPregunta(String mensaje) {
         try {
-            List<UsuarioVO> usuariosConInforme = usuarioRepository.findByInformeIsNotNull();
+            List<UsuarioEntity> usuariosConInforme = usuarioRepository.findByInformeIsNotNull();
 
             List<Map<String, Object>> informes = usuariosConInforme.stream().map(usuario -> {
                 Map<String, Object> map = new HashMap<>();
-                map.put("id", usuario.getId());
+                map.put("id", usuario.getIdUsuario());
                 map.put("informe", usuario.getInforme());
                 return map;
             }).toList();
@@ -104,4 +104,6 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
             throw new RuntimeException("Error recomendando usuarios por pregunta libre", e);
         }
     }
+
+    
 }

@@ -12,20 +12,20 @@ import org.springframework.core.io.Resource;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import com.evalia.backEntrevistasInformes.model.UsuarioVO;
-import com.evalia.backEntrevistasInformes.model.Entrevista;
-import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
-import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
+import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
+import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
+import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
     @Autowired
-    private EntrevistaRepository entrevistaRepository;
+    private entrevistaRepository EntrevistaRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private usuarioRepository UsuarioRepository;
 
     @Autowired
     private ChatClient chatClient;
@@ -40,15 +40,8 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
     public void generarInformeDesdeEntrevista(Long idEntrevista) {
         try {
             // 🔹 Obtener la entrevista con su contenido
-            Entrevista entrevista = entrevistaRepository.cargarEntrevistaCompleta(idEntrevista);
-// @Query("SELECT e FROM Entrevista e " +
-//        "LEFT JOIN FETCH e.entrevistado " +
-//        "LEFT JOIN FETCH e.entrevistador " +
-//        "LEFT JOIN FETCH e.puesto " +
-//        "LEFT JOIN FETCH e.preguntasPersonalizadas " +
-//        "LEFT JOIN FETCH e.respuestas " +
-//        "WHERE e.id = :id")
-// Entrevista cargarEntrevistaCompleta(@Param("id") Long id);
+            EntrevistaEntity entrevista = EntrevistaRepository.cargarEntrevistaCompleta(idEntrevista);
+
 
 
             // 🔹 Serializar toda la entrevista a JSON
@@ -67,11 +60,11 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             String informe = chatClient.prompt(prompt).call().content();
 
             // 🔹 Guardar el informe en el usuario entrevistado
-            UsuarioVO entrevistado = entrevista.getEntrevistado();
+            UsuarioEntity entrevistado = entrevista.getCandidato();
             entrevistado.setInforme(informe);
-            usuarioRepository.save(entrevistado);
+            UsuarioRepository.save(entrevistado);
 
-            System.out.println("✅ Informe generado y guardado para el usuario ID " + entrevistado.getId());
+            System.out.println("✅ Informe generado y guardado para el usuario ID " + entrevistado.getIdUsuario());
 
         } catch (Exception e) {
             System.out.println("❌ Error generando informe: " + e.getMessage());

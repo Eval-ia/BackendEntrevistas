@@ -3,6 +3,7 @@ package com.evalia.backEntrevistasInformes.control;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatRequestBusquedaDTO;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatRequestDTO;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
 import com.evalia.backEntrevistasInformes.service.ia.informe.IInformeEntrevistaService;
