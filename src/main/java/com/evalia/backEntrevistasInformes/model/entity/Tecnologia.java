@@ -1,4 +1,6 @@
-package com.evalia.backEntrevistasInformes.model.vo;
+package com.evalia.backEntrevistasInformes.model.entity;
+
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,16 +11,17 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Entity(name ="Pregunta_personalizada")
-public class PreguntaPersonalizadaVO {
+@Entity(name = "Tecnologia")
+public class Tecnologia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPreguntaPersonalizada;
+    private Long idTecnologia;
+
+    private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "idEntrevista")
-    private EntrevistaVO entrevista;
+    @JoinColumn(name = "idCategoriaTecnologia") 
+    private Categoria_Tecnologia categoria;
 
-    private String texto;
 }

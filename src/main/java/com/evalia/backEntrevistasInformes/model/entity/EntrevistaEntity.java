@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.model.vo;
+package com.evalia.backEntrevistasInformes.model.entity;
 
 import java.time.LocalDate;
 
@@ -12,22 +12,22 @@ import lombok.Data;
 
 @Data
 @Entity(name = "Entrevistas")
-public class EntrevistaVO {
+public class EntrevistaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEntrevista;
 
     @ManyToOne
     @JoinColumn(name = "idEntrevistador")
-    private UsuarioVO entrevistador;
+    private UsuarioEntity entrevistador;
 
     @ManyToOne
     @JoinColumn(name = "idCandidato")
-    private UsuarioVO candidato;
+    private UsuarioEntity candidato;
 
     @ManyToOne
     @JoinColumn(name = "idPuesto")
-    private PuestoTrabajoVO puesto;
+    private PuestoTrabajoEntity puesto;
 
     private LocalDate fecha;
 }
