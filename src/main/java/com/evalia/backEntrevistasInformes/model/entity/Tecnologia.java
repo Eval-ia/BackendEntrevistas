@@ -3,8 +3,6 @@ package com.evalia.backEntrevistasInformes.model.entity;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,7 +21,7 @@ public class Tecnologia {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "idCategoriaTecnologia") // nombre de la columna foránea en la tabla "Tecnologia"
+    @JoinColumn(name = "idCategoriaTecnologia") 
     private Categoria_Tecnologia categoria;
 
 }
