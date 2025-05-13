@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.model;
+package com.evalia.backEntrevistasInformes.model.categoria;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

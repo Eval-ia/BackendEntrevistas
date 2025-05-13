@@ -1,4 +1,6 @@
-package com.evalia.backEntrevistasInformes.model;
+package com.evalia.backEntrevistasInformes.model.usuario;
+
+import com.evalia.backEntrevistasInformes.model.Rol;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
