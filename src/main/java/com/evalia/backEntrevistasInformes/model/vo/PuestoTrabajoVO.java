@@ -20,6 +20,7 @@ public class PuestoTrabajoVO {
 
     private String descripcion;
 
+    @ManyToOne
     @JoinColumn(name = "idCategoria")
     private CategoriaVO categoria;
 
