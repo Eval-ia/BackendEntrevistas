@@ -23,10 +23,10 @@ public class PuestoTrabajoVO {
 
     private String descripcion;
 
-    @JoinColumn(name = "id_categoria")
+    @JoinColumn(name = "idCategoria")
     private CategoriaVO categoria;
 
     @ManyToOne
-    @JoinColumn(name = "id_nivel")
+    @JoinColumn(name = "idNivel")
     private NivelVO nivel;
 }

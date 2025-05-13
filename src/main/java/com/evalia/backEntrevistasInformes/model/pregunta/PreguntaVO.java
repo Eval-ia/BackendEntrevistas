@@ -23,6 +23,6 @@ public class PreguntaVO {
     private Boolean esGenerica;
 
     @ManyToOne
-    @JoinColumn(name = "id_puesto")
+    @JoinColumn(name = "idPuesto")
     private PuestoTrabajoVO puesto;
 }
