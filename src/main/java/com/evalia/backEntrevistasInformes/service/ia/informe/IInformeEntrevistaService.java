@@ -1,7 +1,5 @@
 package com.evalia.backEntrevistasInformes.service.ia.informe;
 
-<<<<<<< HEAD
-=======
 import java.io.File;
 import java.util.List;
 
@@ -11,7 +9,7 @@ import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatRequestDTO;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 
->>>>>>> bryanBack
+
 public interface IInformeEntrevistaService {
     InformeGeneradoDTO generarInformeDesdeEntrevista(List<PreguntaRespuestaDTO> respuestas);
 

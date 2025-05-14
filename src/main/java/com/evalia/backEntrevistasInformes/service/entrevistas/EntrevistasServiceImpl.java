@@ -18,30 +18,31 @@ import com.evalia.backEntrevistasInformes.model.ia.informe.InformeGeneradoDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaPersonalizadaDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 import com.evalia.backEntrevistasInformes.model.respuesta.RespuestaDTO;
-import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
-import com.evalia.backEntrevistasInformes.repository.preguntaPersonalizadaRepository;
-import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
+import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
+import com.evalia.backEntrevistasInformes.repository.PreguntaRepository;
+import com.evalia.backEntrevistasInformes.repository.PuestoTrabajoRepository;
+import com.evalia.backEntrevistasInformes.repository.RespuestaRepository;
+import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.evalia.backEntrevistasInformes.service.ia.informe.IInformeEntrevistaService;
-import com.evalia.backEntrevistasInformes.repository.respuestaRepository;
-import com.evalia.backEntrevistasInformes.repository.puestoTrabajoRepository;
-import com.evalia.backEntrevistasInformes.repository.preguntaRepository;
+
 
 import jakarta.transaction.Transactional;
 
 @Service
 public class EntrevistasServiceImpl implements IEntrevistasService {
     @Autowired
-    entrevistaRepository entrevistaRepository;
+    EntrevistaRepository entrevistaRepository;
     @Autowired
-    usuarioRepository usuarioRepository;
+    UsuarioRepository usuarioRepository;
     @Autowired
-    puestoTrabajoRepository puestoRepository;
+    PuestoTrabajoRepository puestoRepository;
     @Autowired
-    respuestaRepository respuestaRepository;
+    RespuestaRepository respuestaRepository;
     @Autowired
-    preguntaRepository preguntaRepository;
+    PreguntaRepository preguntaRepository;
     @Autowired
-    preguntaPersonalizadaRepository preguntaPersonalizadaRepository;
+    PreguntaPersonalizadaRepository preguntaPersonalizadaRepository;
     @Autowired
     IInformeEntrevistaService iInformeEntrevistaService;
 

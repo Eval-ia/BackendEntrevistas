@@ -13,13 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-<<<<<<< HEAD
-=======
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
->>>>>>> bryanBack
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -27,35 +24,27 @@ import org.springframework.web.client.RestTemplate;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
-<<<<<<< HEAD
 import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
 import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
-=======
 import com.evalia.backEntrevistasInformes.model.ia.informe.InformeGeneradoDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
-import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
-import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
 import com.fasterxml.jackson.databind.JsonNode;
->>>>>>> bryanBack
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
     @Autowired
-    private EntrevistaRepository EntrevistaRepository;
+    private EntrevistaRepository entrevistaRepository;
 
     @Autowired
-    private UsuarioRepository UsuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private ChatClient chatClient;
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    @Autowired
-    private entrevistaRepository entrevistaRepository;
 
     @Value("classpath:templates/InformeEntrevista.st")
     private Resource promptTemplateFile;
@@ -72,14 +61,8 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             // 1. Convertir la lista a JSON
             String jsonEntrevista = objectMapper.writeValueAsString(respuestas);
 
-<<<<<<< HEAD
-            // 🔹 Serializar toda la entrevista a JSON
-            String jsonEntrevista = objectMapper.writeValueAsString(entrevista);
-
             // 🔹 Preparar el prompt para la IA
-=======
-            // 2. Leer plantilla
->>>>>>> bryanBack
+
             String rawTemplate = new String(promptTemplateFile.getInputStream().readAllBytes());
             PromptTemplate template = new PromptTemplate(rawTemplate);
 
@@ -103,10 +86,12 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             dto.setInforme(resultado.get("valoracion_gpt").asText());
             dto.setFortalezas(resultado.get("fortalezas").asText());
             dto.setDebilidades(resultado.get("debilidades").asText());
-            System.out.println("*****************************************************************************************************************************");
+            System.out.println(
+                    "*****************************************************************************************************************************");
 
             System.out.println(dto);
-            System.out.println("*****************************************************************************************************************************");
+            System.out.println(
+                    "*****************************************************************************************************************************");
 
             return dto;
 
