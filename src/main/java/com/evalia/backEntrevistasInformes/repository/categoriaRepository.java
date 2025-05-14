@@ -6,4 +6,5 @@ import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
 
 public interface CategoriaRepository extends JpaRepository<CategoriaEntity, Long>  {
     //#region
+    //dddddd
 }
