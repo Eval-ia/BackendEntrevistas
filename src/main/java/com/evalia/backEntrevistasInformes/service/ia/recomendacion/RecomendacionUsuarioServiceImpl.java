@@ -48,10 +48,10 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
     public ChatResponseDTO recomendarUsuariosPorCategoriaYNivel(Long idCategoria, Long idNivel) {
         try {
             CategoriaEntity categoria = categoriaRepository.findById(idCategoria)
-                .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+                    .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
 
             NivelEntity nivel = nivelTecnologiaRepository.findById(idNivel)
-                .orElseThrow(() -> new RuntimeException("Nivel no encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Nivel no encontrado"));
 
             List<UsuarioEntity> usuariosConInforme = usuarioRepository.findByInformeIsNotNull();
 
@@ -105,5 +105,8 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
         }
     }
 
-    
+    @Override
+    public List<UsuarioEntity> obtenerUsuariosConInforme() {
+        return usuarioRepository.findByInformeIsNotNull();
+    }
 }
