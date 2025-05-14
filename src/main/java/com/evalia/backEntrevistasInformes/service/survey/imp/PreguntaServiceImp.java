@@ -5,7 +5,10 @@ import com.evalia.backEntrevistasInformes.repository.preguntaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IPreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -32,5 +35,25 @@ public class PreguntaServiceImp implements IPreguntaService {
     @Override
     public void deleteById(Long id) {
         preguntaRepository.deleteById(id);
+    }
+
+    @Override
+    public Map<String, List<String>> obtenerPreguntasPorCategoriaYNivel(String categoria, String nivel) {
+
+        List<String> genericas = preguntaRepository.findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(categoria, nivel, true)
+        .stream()
+        .map(PreguntaEntity::getTexto)
+        .toList();
+
+        List<String> especificas = preguntaRepository.findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(categoria, nivel,false)
+        .stream()
+        .map(PreguntaEntity::getTexto)
+        .toList();
+
+        Map<String,List<String>> resultado = new HashMap<>();
+        resultado.put("genericas", genericas);
+        resultado.put("especificas", especificas);
+
+        return resultado;
     }
 }
