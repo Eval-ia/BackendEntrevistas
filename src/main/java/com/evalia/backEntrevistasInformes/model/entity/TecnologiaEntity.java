@@ -1,7 +1,5 @@
 package com.evalia.backEntrevistasInformes.model.entity;
 
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,16 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity(name = "Tecnologia")
-public class Tecnologia {
+public class TecnologiaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTecnologia;
+    Long idCategoria;
 
-    private String nombre;
+    String nombre;
 
     @ManyToOne
     @JoinColumn(name = "idCategoriaTecnologia") 
     private Categoria_Tecnologia categoria;
-
 }

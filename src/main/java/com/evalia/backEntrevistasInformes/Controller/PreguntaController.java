@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.evalia.backEntrevistasInformes.repository.preguntaRepository;
 import com.evalia.backEntrevistasInformes.repository.respuestaRepository;
+import com.evalia.backEntrevistasInformes.service.survey.IPreguntaService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PreguntaController {
 
 
-    private respuestaRepository respuestaRepository;
+    private IPreguntaService preguntaService;
+
+    @GetMapping
+    public ResponseEntity<Map<String,List<String>>> obtenerPreguntas(@RequestParam String categoria, @RequestParam String nivel) {
+        Map<String,List<String>> preguntas = preguntaService.obtenerPreguntasPorCategoriaYNivel(categoria, nivel);
+        
+        return ResponseEntity.ok(preguntas);
+    }
+    
     
 }
