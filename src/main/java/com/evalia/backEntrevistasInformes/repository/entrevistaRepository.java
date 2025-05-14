@@ -17,4 +17,5 @@ public interface EntrevistaRepository extends JpaRepository<EntrevistaEntity, Lo
         "WHERE e.id = :id"
     )
     EntrevistaEntity cargarEntrevistaCompleta(@Param("id") Long id);
+    //#region
 }

@@ -41,8 +41,6 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             // 🔹 Obtener la entrevista con su contenido
             EntrevistaEntity entrevista = EntrevistaRepository.cargarEntrevistaCompleta(idEntrevista);
 
-
-
             // 🔹 Serializar toda la entrevista a JSON
             String jsonEntrevista = objectMapper.writeValueAsString(entrevista);
 
