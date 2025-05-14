@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.controller;
+package com.evalia.backEntrevistasInformes.Controller;
 
 import java.io.File;
 import java.io.IOException;
