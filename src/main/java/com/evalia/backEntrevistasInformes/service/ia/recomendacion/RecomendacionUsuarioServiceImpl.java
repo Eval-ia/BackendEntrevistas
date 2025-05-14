@@ -15,22 +15,22 @@ import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
-import com.evalia.backEntrevistasInformes.repository.NivelRepository;
-import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
-import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
+import com.evalia.backEntrevistasInformes.repository.nivelRepository;
+import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioService {
 
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private categoriaRepository categoriaRepository;
 
     @Autowired
-    private NivelRepository nivelTecnologiaRepository;
+    private nivelRepository nivelTecnologiaRepository;
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private usuarioRepository usuarioRepository;
 
     @Autowired
     private ChatClient chatClient;

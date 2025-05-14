@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
-import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class CategoriaServiceImp implements ICategoriaService {
     
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private categoriaRepository categoriaRepository;
 
     @Override
     public List<CategoriaEntity> findAll() {

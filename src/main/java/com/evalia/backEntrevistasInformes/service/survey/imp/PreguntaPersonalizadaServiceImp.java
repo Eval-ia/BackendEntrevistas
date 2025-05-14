@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.PreguntaPersonalizadaEntity;
-import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
+import com.evalia.backEntrevistasInformes.repository.preguntaPersonalizadaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IPreguntaPersonalizadaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class PreguntaPersonalizadaServiceImp implements IPreguntaPersonalizadaService {
     
     @Autowired
-    private PreguntaPersonalizadaRepository preguntaPersonalizadaRepository;
+    private preguntaPersonalizadaRepository preguntaPersonalizadaRepository;
 
     @Override
     public List<PreguntaPersonalizadaEntity> findAll() {

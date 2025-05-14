@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
-import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
+import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UsuarioServiceImp implements IUsuarioService {
     
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private usuarioRepository usuarioRepository;
 
     @Override
     public List<UsuarioEntity> findAll() {

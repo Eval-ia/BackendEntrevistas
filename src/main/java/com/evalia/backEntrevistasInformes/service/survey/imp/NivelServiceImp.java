@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
-import com.evalia.backEntrevistasInformes.repository.NivelRepository;
+import com.evalia.backEntrevistasInformes.repository.nivelRepository;
 import com.evalia.backEntrevistasInformes.service.survey.INivelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class NivelServiceImp implements INivelService {
     
     @Autowired
-    private NivelRepository nivelRepository;
+    private nivelRepository nivelRepository;
 
     @Override
     public List<NivelEntity> findAll() {
