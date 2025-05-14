@@ -9,7 +9,6 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
@@ -41,8 +40,6 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
         try {
             // 🔹 Obtener la entrevista con su contenido
             EntrevistaEntity entrevista = EntrevistaRepository.cargarEntrevistaCompleta(idEntrevista);
-
-
 
             // 🔹 Serializar toda la entrevista a JSON
             String jsonEntrevista = objectMapper.writeValueAsString(entrevista);

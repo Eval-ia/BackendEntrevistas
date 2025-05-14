@@ -15,4 +15,5 @@ public interface EntrevistaRepository extends JpaRepository<EntrevistaEntity, Lo
             "LEFT JOIN FETCH e.respuestas " +
             "WHERE e.id = :id")
     EntrevistaEntity cargarEntrevistaCompleta(@Param("id") Long id);
+    //#region
 }
