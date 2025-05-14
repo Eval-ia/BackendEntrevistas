@@ -15,22 +15,22 @@ import com.evalia.backEntrevistasInformes.model.entity.TecnologiaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
-import com.evalia.backEntrevistasInformes.repository.nivelRepository;
-import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
-import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
+import com.evalia.backEntrevistasInformes.repository.NivelRepository;
+import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioService {
 
     @Autowired
-    private categoriaRepository categoriaRepository;
+    private CategoriaRepository categoriaRepository;
 
     @Autowired
-    private nivelRepository nivelTecnologiaRepository;
+    private NivelRepository nivelTecnologiaRepository;
 
     @Autowired
-    private usuarioRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private ChatClient chatClient;
@@ -47,11 +47,16 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
     @Override
     public ChatResponseDTO recomendarUsuariosPorCategoriaYNivel(Long idCategoria, Long idNivel) {
         try {
+<<<<<<< HEAD
             TecnologiaEntity categoria = categoriaRepository.findById(idCategoria)
                 .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+=======
+            CategoriaEntity categoria = categoriaRepository.findById(idCategoria)
+                    .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+>>>>>>> main
 
             NivelEntity nivel = nivelTecnologiaRepository.findById(idNivel)
-                .orElseThrow(() -> new RuntimeException("Nivel no encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Nivel no encontrado"));
 
             List<UsuarioEntity> usuariosConInforme = usuarioRepository.findByInformeIsNotNull();
 
@@ -105,5 +110,8 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
         }
     }
 
-    
+    @Override
+    public List<UsuarioEntity> obtenerUsuariosConInforme() {
+        return usuarioRepository.findByInformeIsNotNull();
+    }
 }
