@@ -1,12 +1,12 @@
 package com.evalia.backEntrevistasInformes.service.survey;
 
-import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
+import com.evalia.backEntrevistasInformes.model.entity.TecnologiaEntity;
 import java.util.List;
 import java.util.Optional;
 
 public interface ICategoriaService {
-    List<CategoriaEntity> findAll();
-    Optional<CategoriaEntity> findById(Long id);
-    CategoriaEntity save(CategoriaEntity categoria);
+    List<TecnologiaEntity> findAll();
+    Optional<TecnologiaEntity> findById(Long id);
+    TecnologiaEntity save(TecnologiaEntity categoria);
     void deleteById(Long id);
 }

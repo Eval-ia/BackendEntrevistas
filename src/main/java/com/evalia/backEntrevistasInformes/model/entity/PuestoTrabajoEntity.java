@@ -22,7 +22,7 @@ public class PuestoTrabajoEntity {
 
     @ManyToOne
     @JoinColumn(name = "idCategoria")
-    private CategoriaEntity categoria;
+    private TecnologiaEntity categoria;
 
     @ManyToOne
     @JoinColumn(name = "idNivel")

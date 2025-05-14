@@ -1,6 +1,6 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
-import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
+import com.evalia.backEntrevistasInformes.model.entity.TecnologiaEntity;
 import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +15,17 @@ public class CategoriaServiceImp implements ICategoriaService {
     private categoriaRepository categoriaRepository;
 
     @Override
-    public List<CategoriaEntity> findAll() {
+    public List<TecnologiaEntity> findAll() {
         return categoriaRepository.findAll();
     }
 
     @Override
-    public Optional<CategoriaEntity> findById(Long id) {
+    public Optional<TecnologiaEntity> findById(Long id) {
         return categoriaRepository.findById(id);
     }
 
     @Override
-    public CategoriaEntity save(CategoriaEntity categoria) {
+    public TecnologiaEntity save(TecnologiaEntity categoria) {
         return categoriaRepository.save(categoria);
     }
 

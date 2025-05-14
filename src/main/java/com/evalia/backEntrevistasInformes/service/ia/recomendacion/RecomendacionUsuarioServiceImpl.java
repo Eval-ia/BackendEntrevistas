@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
+import com.evalia.backEntrevistasInformes.model.entity.TecnologiaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
@@ -47,7 +47,7 @@ public class RecomendacionUsuarioServiceImpl implements IRecomendacionUsuarioSer
     @Override
     public ChatResponseDTO recomendarUsuariosPorCategoriaYNivel(Long idCategoria, Long idNivel) {
         try {
-            CategoriaEntity categoria = categoriaRepository.findById(idCategoria)
+            TecnologiaEntity categoria = categoriaRepository.findById(idCategoria)
                 .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
 
             NivelEntity nivel = nivelTecnologiaRepository.findById(idNivel)
