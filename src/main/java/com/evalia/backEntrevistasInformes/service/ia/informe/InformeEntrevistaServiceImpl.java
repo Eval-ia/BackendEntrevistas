@@ -14,18 +14,18 @@ import org.springframework.stereotype.Service;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
-import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
-import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
+import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
     @Autowired
-    private entrevistaRepository EntrevistaRepository;
+    private EntrevistaRepository EntrevistaRepository;
 
     @Autowired
-    private usuarioRepository UsuarioRepository;
+    private UsuarioRepository UsuarioRepository;
 
     @Autowired
     private ChatClient chatClient;
