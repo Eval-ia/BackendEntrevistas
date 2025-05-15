@@ -32,7 +32,6 @@ import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.micrometer.core.instrument.MultiGauge.Row;
 
 @Service
 public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
