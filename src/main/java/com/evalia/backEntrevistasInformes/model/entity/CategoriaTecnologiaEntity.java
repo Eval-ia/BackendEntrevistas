@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity(name="CategoriaTecnologia")
-public class Categoria_Tecnologia {
+public class CategoriaTecnologiaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

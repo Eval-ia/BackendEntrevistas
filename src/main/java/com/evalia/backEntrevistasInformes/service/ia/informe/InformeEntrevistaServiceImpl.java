@@ -2,7 +2,6 @@ package com.evalia.backEntrevistasInformes.service.ia.informe;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
