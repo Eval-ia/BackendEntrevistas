@@ -16,7 +16,7 @@ public class Categoria_Tecnologia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCategoriaTecnologi;
+    private Long idCategoriaTecnologia;
 
     @Enumerated(EnumType.STRING)
     private NombreCategoriaTecnologia nombre;
