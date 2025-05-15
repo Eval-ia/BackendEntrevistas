@@ -15,7 +15,7 @@ public class CategoriaServiceImp implements ICategoriaService {
     private CategoriaRepository categoriaRepository;
 
     @Override
-    public List<CategoriaEntity> findAll() {
+    public List<CategoriaEntity> getAllCategorias() {
         return categoriaRepository.findAll();
     }
 
