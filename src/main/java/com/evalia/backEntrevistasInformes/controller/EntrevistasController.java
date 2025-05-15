@@ -25,4 +25,9 @@ public class EntrevistasController {
         return ResponseEntity.ok("✅ Backend entrevistas operativo");
     }
 
+    // @GetMapping("/categorias")
+    // public ResponseEntity<String> getCategorias() {
+        
+    // }
+
 }
