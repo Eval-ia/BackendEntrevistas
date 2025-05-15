@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,7 +27,6 @@ import org.springframework.web.client.RestTemplate;
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
-import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.evalia.backEntrevistasInformes.model.ia.informe.InformeGeneradoDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -42,8 +40,8 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
     @Autowired
     private EntrevistaRepository entrevistaRepository;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    // @Autowired
+    // private UsuarioRepository usuarioRepository;
 
     @Autowired
     private ChatClient chatClient;

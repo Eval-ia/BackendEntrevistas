@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.ai.chat.messages.UserMessage;
-import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +16,7 @@ import com.evalia.backEntrevistasInformes.model.entity.RespuestaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 import com.evalia.backEntrevistasInformes.model.entrevista.EntrevistaFinalizadaDTO;
 import com.evalia.backEntrevistasInformes.model.ia.informe.InformeGeneradoDTO;
-import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaPersonalizadaDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
-import com.evalia.backEntrevistasInformes.model.respuesta.RespuestaDTO;
 import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
 import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
 import com.evalia.backEntrevistasInformes.repository.PreguntaRepository;
@@ -28,8 +24,6 @@ import com.evalia.backEntrevistasInformes.repository.PuestoTrabajoRepository;
 import com.evalia.backEntrevistasInformes.repository.RespuestaRepository;
 import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.evalia.backEntrevistasInformes.service.ia.informe.IInformeEntrevistaService;
-import com.evalia.backEntrevistasInformes.service.ia.recomendacion.IRecomendacionUsuarioService;
-
 import jakarta.transaction.Transactional;
 
 @Service
