@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 
 public interface entrevistaRepository extends JpaRepository<EntrevistaEntity, Long> {
-@Query("SELECT e FROM EntrevistaEntity e " +
+@Query("SELECT e FROM Entrevistas e " +
        "LEFT JOIN FETCH e.candidato " +
        "LEFT JOIN FETCH e.entrevistador " +
        "LEFT JOIN FETCH e.puesto " +
