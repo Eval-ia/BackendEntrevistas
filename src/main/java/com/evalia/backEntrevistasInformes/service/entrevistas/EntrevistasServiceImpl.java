@@ -1,7 +1,10 @@
 package com.evalia.backEntrevistasInformes.service.entrevistas;
 
+import java.io.File;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.ai.chat.messages.UserMessage;
@@ -25,7 +28,7 @@ import com.evalia.backEntrevistasInformes.repository.PuestoTrabajoRepository;
 import com.evalia.backEntrevistasInformes.repository.RespuestaRepository;
 import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.evalia.backEntrevistasInformes.service.ia.informe.IInformeEntrevistaService;
-
+import com.evalia.backEntrevistasInformes.service.ia.recomendacion.IRecomendacionUsuarioService;
 
 import jakarta.transaction.Transactional;
 
@@ -46,6 +49,7 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
     @Autowired
     IInformeEntrevistaService iInformeEntrevistaService;
 
+    @Transactional
     public String finalizarEntrevista(EntrevistaFinalizadaDTO dto) {
         // 1. Crear la EntrevistaEntity con los datos recibidos
         EntrevistaEntity entrevista = new EntrevistaEntity();
@@ -90,14 +94,28 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
         // 4. Llamar a la IA para generar informe
         UsuarioEntity candidato = entrevista.getCandidato();
         InformeGeneradoDTO resultado = iInformeEntrevistaService.generarInformeDesdeEntrevista(dto.getRespuestas());
-        
+
         candidato.setInforme(resultado.getInforme());
         candidato.setFortalezas(resultado.getFortalezas());
         candidato.setDebilidades(resultado.getDebilidades());
 
         usuarioRepository.save(candidato);
 
-        // 5. Mensaje de éxito
+        // 6. Exportar a CSV y enviar a App2 (después de guardar el informe)
+        List<UsuarioEntity> candidatosConInforme = Collections.singletonList(candidato);
+
+            // Ruta temporal para el CSV (puedes mejorar esto con una ruta configurable)
+            new File("temp").mkdirs();
+        String rutaCsv = "temp/candidato_" + candidato.getIdUsuario() + ".csv";
+
+            // Exportar CSV
+        iInformeEntrevistaService.exportarCandidatosConInforme(candidatosConInforme, rutaCsv);
+
+            // Enviar a la App2
+        File archivoCsv = new File(rutaCsv);
+        iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
+
+        // 7. Mensaje de éxito
         return "Entrevista finalizada y guardada correctamente";
     }
 

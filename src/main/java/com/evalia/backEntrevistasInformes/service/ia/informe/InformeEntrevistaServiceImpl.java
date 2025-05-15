@@ -1,8 +1,11 @@
 package com.evalia.backEntrevistasInformes.service.ia.informe;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +33,8 @@ import com.evalia.backEntrevistasInformes.model.ia.informe.InformeGeneradoDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.micrometer.core.instrument.MultiGauge.Row;
 
 @Service
 public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
@@ -86,12 +91,6 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             dto.setInforme(resultado.get("valoracion_gpt").asText());
             dto.setFortalezas(resultado.get("fortalezas").asText());
             dto.setDebilidades(resultado.get("debilidades").asText());
-            System.out.println(
-                    "*****************************************************************************************************************************");
-
-            System.out.println(dto);
-            System.out.println(
-                    "*****************************************************************************************************************************");
 
             return dto;
 
@@ -102,24 +101,31 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
     @Override
     public void exportarCandidatosConInforme(List<UsuarioEntity> usuarios, String rutaArchivoCsv) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(rutaArchivoCsv))) {
-            // Escribir cabecera
-            writer.println("candidato_id,puesto,fortalezas,debilidades,valoracion_gpt");
+        try (OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(rutaArchivoCsv),
+                StandardCharsets.UTF_8);
+                PrintWriter writer = new PrintWriter(osw)) {
+
+            writer.write('\uFEFF'); // BOM para Excel
+
+            String sep = ";"; // o ";"
+
+            // Cabecera
+            writer.println(String.join(sep,
+                    "\"candidato_id\"", "\"puesto\"", "\"fortalezas\"", "\"debilidades\"", "\"valoracion_gpt\""));
 
             for (UsuarioEntity usuario : usuarios) {
-                // Buscar la entrevista del candidato
                 EntrevistaEntity entrevista = entrevistaRepository
                         .findFirstByCandidatoIdUsuario(usuario.getIdUsuario());
 
-                if (entrevista != null && usuario.getInforme() != null) {
-                    String candidatoId = "c" + usuario.getIdUsuario();
-                    String puesto = entrevista.getPuesto().getNombre().replace(",", " ");
-                    String fortalezas = usuario.getFortalezas().replace(",", " ");
-                    String debilidades = usuario.getDebilidades().replace(",", " ");
-                    String informe = usuario.getInforme().replace("\"", "'");
-
-                    writer.printf("%s,%s,%s,%s,\"%s\"%n",
-                            candidatoId, puesto, fortalezas, debilidades, informe);
+                if (entrevista != null && usuario.getInforme() != null && !usuario.getInforme().isBlank()) {
+                    String[] fila = {
+                            "\"" + usuario.getIdUsuario() + "\"",
+                            "\"" + entrevista.getPuesto().getNombre().replace("\"", "\"\"") + "\"",
+                            "\"" + usuario.getFortalezas().replace("\"", "\"\"") + "\"",
+                            "\"" + usuario.getDebilidades().replace("\"", "\"\"") + "\"",
+                            "\"" + usuario.getInforme().replace("\"", "\"\"") + "\""
+                    };
+                    writer.println(String.join(sep, fila));
                 }
             }
 
