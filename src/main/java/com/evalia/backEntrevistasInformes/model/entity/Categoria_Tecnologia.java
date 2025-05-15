@@ -8,6 +8,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -20,4 +22,8 @@ public class Categoria_Tecnologia {
 
     @Enumerated(EnumType.STRING)
     private NombreCategoriaTecnologia nombre;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private CategoriaEntity categoria;
 }
