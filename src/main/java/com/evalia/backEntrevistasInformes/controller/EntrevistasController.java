@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.Controller;
+package com.evalia.backEntrevistasInformes.controller;
 
 import com.evalia.backEntrevistasInformes.model.entrevista.EntrevistaFinalizadaDTO;
 import com.evalia.backEntrevistasInformes.service.entrevistas.IEntrevistasService;
