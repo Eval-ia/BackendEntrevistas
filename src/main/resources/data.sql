@@ -1,39 +1,5 @@
-INSERT IGNORE INTO `categoria_tecnologia` (`id_categoria_tecnologia`, `nombre`) VALUES
-(1,'MOVIL');
 
-INSERT IGNORE INTO `categoria` (`id_categoria`, `nombre`,`id_categoria_tecnologia`) VALUES
-(1, 'IOS',1),
-(2, 'Android'),
-(3, 'Cordova'),
-(4, 'Xamarin'),
-(5, 'Ionic'),
-(6, 'HTML'),
-(7, 'CSS'),
-(8, 'Angular'),
-(9, 'Bootstrap'),
-(10, 'Java'),
-(11, 'Spring'),
-(12, 'SpringBoot'),
-(13, 'REST'),
-(14, '.NET'),
-(15, 'AEM'),
-(16, 'Git'),
-(17, 'Subversion'),
-(18, 'Jira'),
-(19, 'Cloudera'),
-(20, 'Stratio'),
-(21, 'SQL Server'),
-(22, 'BizTalk Server'),
-(23, 'SAP'),
-(24, 'Appian'),
-(25, 'Salesforce'),
-(26, 'SharePoint'),
-(27, 'Visual studio');
-
-
-
-
-INSERT IGNORE INTO `nivel` (`id_nivel`, `nombre`) VALUES
+INSERT IGNORE INTO `Nivel` (`id_nivel`, `nombre`) VALUES
 (1, 'Junior'),
 (2, 'Semi senior'),
 (3, 'Senior');
@@ -289,3 +255,40 @@ INSERT IGNORE INTO `pregunta` (`id_pregunta`, `es_generica`, `texto`, `id_puesto
 (165, 0, '¿Cómo modularizas una app grande?', 21),
 (166, 0, '¿Cómo gestionas dependencias con Dagger/Hilt?', 21),
 (167, 0, '¿Cómo aplicas arquitectura Clean o Hexagonal?', 21);
+
+INSERT IGNORE INTO `categoria_tecnologia` (`id_categoria_tecnologia`, `nombre`) VALUES
+(1,'MOVIL'),
+(2,'FRONTEND'),
+(3,'BACKEND'),
+(4,'DEVOPS'),
+(5,'DATOS'),
+(6,'EMPRESARIAL');
+
+INSERT IGNORE INTO `categoria` (`id_categoria`, `nombre`,`id_categoria_tecnologia`) VALUES
+(1, 'IOS',1),
+(2, 'Android',1),
+(3, 'Cordova',1),
+(4, 'Xamarin',1),
+(5, 'Ionic',1),
+(6, 'HTML',2),
+(7, 'CSS',2),
+(8, 'Angular',2),
+(9, 'Bootstrap',2),
+(10, 'Java',3),
+(11, 'Spring',3),
+(12, 'SpringBoot',3),
+(13, 'REST',3),
+(14, '.NET',3),
+(15, 'AEM',3),
+(16, 'Git',4),
+(17, 'Subversion',4),
+(18, 'Jira',4),
+(19, 'Cloudera',5),
+(20, 'Stratio',5),
+(21, 'SQL Server',5),
+(22, 'BizTalk Server',5),
+(23, 'SAP',6),
+(24, 'Appian',6),
+(25, 'Salesforce',6),
+(26, 'SharePoint',6),
+(27, 'Visual studio',6);
