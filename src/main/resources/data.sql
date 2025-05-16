@@ -1,10 +1,10 @@
-INSERT IGNORE INTO 'categoria_tecnologia' ('id_categoria_tecnologi', 'nombre') VALUES
+INSERT IGNORE INTO `categoria_tecnologia` (`id_categoria_tecnologi`, `nombre`) VALUES
 (1, 'Movil'),
 (2, 'Frontend'),
 (3, 'Backend'),
 (4, 'DevOps'),
 (5, 'Datos'),
-(6, 'Empresarial'),
+(6, 'Empresarial');
 
 INSERT IGNORE INTO `categoria` (`id_categoria`, `nombre`) VALUES
 (1, 'IOS'),
