@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity(name ="Usuarios")
+@Entity(name = "Usuarios")
 public class UsuarioEntity {
 
     @Id
@@ -25,7 +25,10 @@ public class UsuarioEntity {
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
-
+    @Column(columnDefinition = "LONGTEXT")
+    private String fortalezas;
+    @Column(columnDefinition = "LONGTEXT")
+    private String debilidades;
     @Column(columnDefinition = "LONGTEXT")
     private String informe;
 
