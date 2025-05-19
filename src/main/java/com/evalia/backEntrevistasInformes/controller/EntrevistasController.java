@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.evalia.backEntrevistasInformes.model.entrevista.EntrevistaFinalizadaDTO;
 import com.evalia.backEntrevistasInformes.service.entrevistas.IEntrevistasService;
-import com.evalia.backEntrevistasInformes.service.survey.ICategoriaService;
 import com.evalia.backEntrevistasInformes.service.survey.ICategoriaTecnologiaService;
 
 @RestController
@@ -21,9 +20,6 @@ public class EntrevistasController {
 
     @Autowired
     private IEntrevistasService entrevistaService;
-
-    @Autowired
-    private ICategoriaService categoriaService;
 
     @Autowired
     private ICategoriaTecnologiaService categoriaTecnologiaService;
