@@ -3,8 +3,8 @@ package com.evalia.backEntrevistasInformes.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.evalia.backEntrevistasInformes.repository.preguntaRepository;
-import com.evalia.backEntrevistasInformes.repository.respuestaRepository;
+import com.evalia.backEntrevistasInformes.repository.PreguntaRepository;
+import com.evalia.backEntrevistasInformes.repository.RespuestaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IPreguntaService;
 
 import lombok.RequiredArgsConstructor;

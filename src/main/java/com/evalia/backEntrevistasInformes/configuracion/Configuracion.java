@@ -12,8 +12,7 @@ public class Configuracion {
     @Bean ChatClient chatClient(OpenAiChatModel model) {
         return ChatClient.builder(model).build();
     }
-
-
+    
     @Bean RestTemplate restTemplate() {
         return new RestTemplate();
     }
