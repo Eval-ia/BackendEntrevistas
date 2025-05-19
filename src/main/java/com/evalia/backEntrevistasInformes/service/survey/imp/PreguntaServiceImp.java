@@ -38,22 +38,32 @@ public class PreguntaServiceImp implements IPreguntaService {
     }
 
     @Override
-    public Map<String, List<String>> obtenerPreguntasPorCategoriaYNivel(String categoria, String nivel) {
-
-        List<String> genericas = preguntaRepository.findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(categoria, nivel, true)
-        .stream()
-        .map(PreguntaEntity::getTexto)
-        .toList();
-
-        List<String> especificas = preguntaRepository.findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(categoria, nivel,false)
-        .stream()
-        .map(PreguntaEntity::getTexto)
-        .toList();
-
-        Map<String,List<String>> resultado = new HashMap<>();
-        resultado.put("genericas", genericas);
-        resultado.put("especificas", especificas);
-
-        return resultado;
+    public List<PreguntaEntity> obtenerPorPuesto(Long idPuesto) {
+        return preguntaRepository.findByPuesto_IdPuesto(idPuesto);
     }
+
+    @Override
+    public List<PreguntaEntity> obtenerGenericas() {
+        return preguntaRepository.findByEsGenericaTrue();
+    }
+
+    // @Override
+    // public Map<String, List<String>> obtenerPreguntasPorCategoriaYNivel(String categoria, String nivel) {
+
+    //     List<String> genericas = preguntaRepository.findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(categoria, nivel, true)
+    //     .stream()
+    //     .map(PreguntaEntity::getTexto)
+    //     .toList();
+
+    //     List<String> especificas = preguntaRepository.findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(categoria, nivel,false)
+    //     .stream()
+    //     .map(PreguntaEntity::getTexto)
+    //     .toList();
+
+    //     Map<String,List<String>> resultado = new HashMap<>();
+    //     resultado.put("genericas", genericas);
+    //     resultado.put("especificas", especificas);
+
+    //     return resultado;
+    // }
 }

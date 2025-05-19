@@ -7,9 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.evalia.backEntrevistasInformes.model.entity.PreguntaEntity;
 public interface PreguntaRepository extends JpaRepository<PreguntaEntity, Long> {
-
-    Collection<PreguntaEntity> findByPuesto_CategoriaAndPuesto_NivelAndEsGenerica(String categoria, String nivel,
-            boolean b);
-
-
+    List<PreguntaEntity> findByEsGenericaTrue();
+    List<PreguntaEntity> findByPuesto_IdPuesto(Long idPuesto);
 }
