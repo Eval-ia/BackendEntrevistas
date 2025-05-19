@@ -31,4 +31,6 @@ public class RespuestaEntity {
 
     @Column(columnDefinition = "TEXT")
     private String textoRespuesta;
+    
+   
 }
