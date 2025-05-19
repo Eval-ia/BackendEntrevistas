@@ -21,5 +21,8 @@ public class CategoriaEntity {
     @ManyToOne
     @JoinColumn(name = "id_categoria_tecnologia")
     private Categoria_Tecnologia categoriaTecnologia;
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 }

@@ -25,6 +25,10 @@ public class Categoria_Tecnologia {
     @Enumerated(EnumType.STRING)
     private NombreCategoriaTecnologia nombre;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     @OneToMany(mappedBy = "categoriaTecnologia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CategoriaEntity> categorias;
 }
