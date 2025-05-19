@@ -41,7 +41,10 @@ public class EntrevistasController {
 
     @GetMapping("/categorias")
     public ResponseEntity<List<?>> getCategorias() {
-        return ResponseEntity.ok(categoriaTecnologiaService.getAllCategoriasTecnologias());
+
+        return ResponseEntity.ok(
+                List.of(categoriaService.getAllCategorias(), categoriaTecnologiaService.getAllCategoriasTecnologias()));
+
     }
 
 }
