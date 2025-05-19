@@ -13,7 +13,6 @@ public class Configuracion {
         return ChatClient.builder(model).build();
     }
 
-
     @Bean RestTemplate restTemplate() {
         return new RestTemplate();
     }

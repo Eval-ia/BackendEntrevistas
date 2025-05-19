@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.evalia.backEntrevistasInformes.model.entity.PuestoTrabajoEntity;
 import com.evalia.backEntrevistasInformes.service.survey.IPuestoTrabajoService;
-import com.evalia.backEntrevistasInformes.service.survey.IUsuarioService;
 
 @RestController
 @RequestMapping("/api/puestos")

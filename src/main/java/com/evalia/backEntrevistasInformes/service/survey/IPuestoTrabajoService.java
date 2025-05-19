@@ -1,7 +1,6 @@
 package com.evalia.backEntrevistasInformes.service.survey;
 
 import com.evalia.backEntrevistasInformes.model.entity.PuestoTrabajoEntity;
-import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 
 import java.util.List;
 import java.util.Optional;
