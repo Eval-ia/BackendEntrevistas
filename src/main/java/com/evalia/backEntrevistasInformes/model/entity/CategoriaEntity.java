@@ -1,5 +1,7 @@
 package com.evalia.backEntrevistasInformes.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,5 +22,6 @@ public class CategoriaEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria_tecnologia")
+    @JsonIgnore
     private CategoriaTecnologiaEntity categoriaTecnologia;
 }
