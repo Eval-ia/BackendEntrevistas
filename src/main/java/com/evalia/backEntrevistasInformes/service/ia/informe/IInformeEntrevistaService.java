@@ -1,5 +1,8 @@
 package com.evalia.backEntrevistasInformes.service.ia.informe;
 
+
+import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatRequestDTO;
+import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
 import java.io.File;
 import java.util.List;
 

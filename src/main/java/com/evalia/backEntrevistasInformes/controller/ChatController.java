@@ -1,14 +1,19 @@
+<<<<<<< HEAD
 package com.evalia.backEntrevistasInformes.Controller;
+=======
+package com.evalia.backEntrevistasInformes.controller;
+<<<<<<< HEAD
+=======
+>>>>>>> 089c16cd28ab5e5d6cb867a56df3b063b8bea4e0
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+>>>>>>> main
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatRequestBusquedaDTO;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatRequestDTO;
 import com.evalia.backEntrevistasInformes.model.ia.recomendacion.ChatResponseDTO;
@@ -25,11 +30,18 @@ public class ChatController {
     @Autowired
     private IRecomendacionUsuarioService recomendacionUsuarioService;
 
+    // 🔹 Generar informe tras entrevista
+    @PostMapping("/informe/{idEntrevista}")
+    public void generarInforme(@PathVariable Long idEntrevista) {
+        informeEntrevistaService.generarInformeDesdeEntrevista(idEntrevista);
+    }
+
     // 🔹 Recomendación por categoría y nivel
     @PostMapping("/recomendacion")
     public ChatResponseDTO recomendarPorCategoriaYNivel(@RequestBody ChatRequestBusquedaDTO datos) {
         return recomendacionUsuarioService.recomendarUsuariosPorCategoriaYNivel(
-                datos.getIdCategoria(), datos.getIdNivel());
+            datos.getIdCategoria(), datos.getIdNivel()
+        );
     }
 
     // 🔹 Recomendación por pregunta libre (chat)
@@ -37,39 +49,5 @@ public class ChatController {
     public ChatResponseDTO recomendarPorPreguntaLibre(@RequestBody ChatRequestDTO datos) {
         return recomendacionUsuarioService.recomendarUsuariosPorPregunta(datos.getMensaje());
     }
-
-    @PostMapping("/enviar-csv")
-    public String enviarCsv(@RequestParam("archivo") MultipartFile archivo) throws IOException {
-        // Convertir MultipartFile a File temporal
-        File tempFile = File.createTempFile("upload-", ".csv");
-        archivo.transferTo(tempFile);
-
-        String respuesta = informeEntrevistaService.enviarCsvParaRanking(tempFile);
-
-        // Limpieza
-        tempFile.delete();
-
-        return respuesta;
-    }
-
-    @GetMapping("/exportar-ranking")
-    public String exportarYEnviarRanking() throws IOException {
-        // Obtener todos los usuarios con informe
-        List<UsuarioEntity> usuariosConInforme = recomendacionUsuarioService.obtenerUsuariosConInforme();
-
-        // Crear archivo CSV temporal
-        File archivoCsv = File.createTempFile("ranking-", ".csv");
-
-        // Exportar al CSV
-        informeEntrevistaService.exportarCandidatosConInforme(usuariosConInforme, archivoCsv.getAbsolutePath());
-
-        // Enviar el CSV a App2
-        String respuesta = informeEntrevistaService.enviarCsvParaRanking(archivoCsv);
-
-        // Borrar archivo temporal
-        archivoCsv.delete();
-
-        return respuesta;
-    }
-
 }
+

@@ -16,4 +16,9 @@ public class Configuracion {
     @Bean RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+    @Bean
+    public ChatClient chatClientFromBuilder(ChatClient.Builder builder) {
+        return builder.build();
+    }
 }

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 089c16cd28ab5e5d6cb867a56df3b063b8bea4e0
 INSERT IGNORE INTO `Nivel` (`id_nivel`, `nombre`) VALUES
 (1, 'Junior'),
 (2, 'Semi senior'),
@@ -290,4 +294,8 @@ INSERT IGNORE INTO `categoria` (`id_categoria`, `nombre`,`id_categoria_tecnologi
 (24, 'Appian',6),
 (25, 'Salesforce',6),
 (26, 'SharePoint',6),
+<<<<<<< HEAD
 (27, 'Visual studio',6);
+=======
+(27, 'Visual studio',6);
+>>>>>>> 089c16cd28ab5e5d6cb867a56df3b063b8bea4e0

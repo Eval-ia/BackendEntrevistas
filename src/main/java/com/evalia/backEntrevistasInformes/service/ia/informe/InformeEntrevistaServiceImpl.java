@@ -1,34 +1,41 @@
 package com.evalia.backEntrevistasInformes.service.ia.informe;
 
+<<<<<<< HEAD
+
+=======
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+>>>>>>> main
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+<<<<<<< HEAD
+=======
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+>>>>>>> main
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
+<<<<<<< HEAD
+import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
+=======
 import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
 import com.evalia.backEntrevistasInformes.model.ia.informe.InformeGeneradoDTO;
 import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 import com.fasterxml.jackson.databind.JsonNode;
+>>>>>>> main
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -36,10 +43,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
     @Autowired
-    private EntrevistaRepository entrevistaRepository;
+    private entrevistaRepository EntrevistaRepository;
 
+<<<<<<< HEAD
+    @Autowired
+    private usuarioRepository UsuarioRepository;
+=======
     // @Autowired
     // private UsuarioRepository usuarioRepository;
+>>>>>>> main
 
     @Autowired
     private ChatClient chatClient;
@@ -50,31 +62,37 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
     @Value("classpath:templates/InformeEntrevista.st")
     private Resource promptTemplateFile;
 
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Value("${url.app2}")
-    private String urlApp2;
-
     @Override
-    public InformeGeneradoDTO generarInformeDesdeEntrevista(List<PreguntaRespuestaDTO> respuestas) {
+    public void generarInformeDesdeEntrevista(Long idEntrevista) {
         try {
-            // 1. Convertir la lista a JSON
-            String jsonEntrevista = objectMapper.writeValueAsString(respuestas);
+            // 🔹 Obtener la entrevista con su contenido
+            EntrevistaEntity entrevista = EntrevistaRepository.cargarEntrevistaCompleta(idEntrevista);
+
+
+
+            // 🔹 Serializar toda la entrevista a JSON
+            String jsonEntrevista = objectMapper.writeValueAsString(entrevista);
 
             // 🔹 Preparar el prompt para la IA
-
             String rawTemplate = new String(promptTemplateFile.getInputStream().readAllBytes());
             PromptTemplate template = new PromptTemplate(rawTemplate);
 
-            // 3. Sustituir variables
             Map<String, Object> variables = new HashMap<>();
             variables.put("entrevista_completa", jsonEntrevista);
+
             var prompt = template.create(variables);
 
-            // 4. Llamada a GPT
-            String respuestaGPT = chatClient.prompt(prompt).call().content();
+            // 🔹 Llamar a la IA
+            String informe = chatClient.prompt(prompt).call().content();
 
+<<<<<<< HEAD
+            // 🔹 Guardar el informe en el usuario entrevistado
+            UsuarioEntity entrevistado = entrevista.getCandidato();
+            entrevistado.setInforme(informe);
+            UsuarioRepository.save(entrevistado);
+
+            System.out.println("✅ Informe generado y guardado para el usuario ID " + entrevistado.getIdUsuario());
+=======
             // 5. Parseo del resultado
             System.out.println("📦 Respuesta GPT:\n" + respuestaGPT);
             String contenido = respuestaGPT.trim()
@@ -89,11 +107,15 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             dto.setDebilidades(resultado.get("debilidades").asText());
 
             return dto;
+>>>>>>> main
 
         } catch (Exception e) {
-            throw new RuntimeException("❌ Error generando informe", e);
+            System.out.println("❌ Error generando informe: " + e.getMessage());
+            throw new RuntimeException("Error generando informe", e);
         }
     }
+<<<<<<< HEAD
+=======
 
     @Override
     public void exportarCandidatosConInforme(List<UsuarioEntity> usuarios, String rutaArchivoCsv) {
@@ -152,4 +174,5 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
         }
     }
 
+>>>>>>> main
 }
