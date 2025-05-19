@@ -11,5 +11,6 @@ public interface IPreguntaService {
     Optional<PreguntaEntity> findById(Long id);
     PreguntaEntity save(PreguntaEntity pregunta);
     void deleteById(Long id);
-    Map<String, List<String>> obtenerPreguntasPorCategoriaYNivel(String categoria, String nivel);
+    List<PreguntaEntity> obtenerPorPuesto(Long idPuesto);
+    List<PreguntaEntity> obtenerGenericas();
 }
