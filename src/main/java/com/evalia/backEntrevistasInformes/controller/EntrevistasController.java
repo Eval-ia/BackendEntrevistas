@@ -39,7 +39,7 @@ public class EntrevistasController {
     public ResponseEntity<List<?>> getCategorias() {
 
         return ResponseEntity.ok(
-                List.of(categoriaService.getAllCategorias(), categoriaTecnologiaService.getAllCategoriasTecnologias()));
+                List.of(categoriaTecnologiaService.getAllCategoriasTecnologias()));
 
     }
 
