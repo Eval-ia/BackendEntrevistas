@@ -10,10 +10,8 @@ import lombok.Data;
 @Entity(name = "Nivel")
 public class NivelEntity {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idNivel;
-
     String nombre;
 }

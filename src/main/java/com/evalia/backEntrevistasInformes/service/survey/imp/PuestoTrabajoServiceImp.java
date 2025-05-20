@@ -3,6 +3,8 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
 import com.evalia.backEntrevistasInformes.model.entity.PuestoTrabajoEntity;
+import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.NivelRepository;
 import com.evalia.backEntrevistasInformes.repository.PuestoTrabajoRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IPuestoTrabajoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,13 @@ import java.util.Optional;
 
 @Service
 public class PuestoTrabajoServiceImp implements IPuestoTrabajoService {
-    
+
     @Autowired
     private PuestoTrabajoRepository puestoTrabajoRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+    @Autowired
+    private NivelRepository nivelRepository;
 
     @Override
     public List<PuestoTrabajoEntity> findAll() {
@@ -54,4 +60,14 @@ public class PuestoTrabajoServiceImp implements IPuestoTrabajoService {
                     return puestoRepo.save(nuevo);
                 });
     }
+    public Optional<PuestoTrabajoEntity> findByCategoriaNombreAndNivel(String nombreCategoria, String nombreNivel) {
+    Optional<CategoriaEntity> categoriaOpt = categoriaRepository.findByNombre(nombreCategoria);
+    Optional<NivelEntity> nivelOpt = nivelRepository.findByNombre(nombreNivel);
+    if (categoriaOpt.isEmpty() || nivelOpt.isEmpty()) return Optional.empty();
+    return puestoTrabajoRepository.findByCategoriaAndNivel(categoriaOpt.get(), nivelOpt.get());
+}
+
+
+   
+
 }

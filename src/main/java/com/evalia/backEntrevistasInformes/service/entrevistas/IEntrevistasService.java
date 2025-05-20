@@ -4,5 +4,4 @@ import com.evalia.backEntrevistasInformes.model.entrevista.EntrevistaFinalizadaD
 
 public interface IEntrevistasService {
     String finalizarEntrevista(EntrevistaFinalizadaDTO dto);
-
 }

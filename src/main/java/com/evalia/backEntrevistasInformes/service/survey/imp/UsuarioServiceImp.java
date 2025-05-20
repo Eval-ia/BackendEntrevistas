@@ -39,4 +39,5 @@ public class UsuarioServiceImp implements IUsuarioService {
     public Optional<UsuarioEntity> findByNombreAndRol(String nombre, Rol rol) {
         return usuarioRepository.findByNombreAndRol(nombre, rol);
     }
+
 }
