@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.Controller;
+package com.evalia.backEntrevistasInformes.controller;
 
 import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
 import com.evalia.backEntrevistasInformes.service.survey.CategoriaService;
