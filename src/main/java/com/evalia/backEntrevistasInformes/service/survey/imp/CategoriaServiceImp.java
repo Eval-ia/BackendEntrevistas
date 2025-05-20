@@ -44,29 +44,8 @@ public class CategoriaServiceImp implements ICategoriaService {
                 });
     }
 
-    @Override
-    public List<CategoriaEntity> getAllCategorias() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllCategorias'");
-    }
+    
 
-    @Override
-    public Optional<CategoriaEntity> findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    @Override
-    public CategoriaEntity save(CategoriaEntity categoria) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
-    }
 
 
 

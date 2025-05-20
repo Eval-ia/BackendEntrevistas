@@ -57,17 +57,16 @@ public class PuestoTrabajoServiceImp implements IPuestoTrabajoService {
                     nuevo.setNivel(nivelEntity);
                     nuevo.setNombre("");
                     nuevo.setDescripcion("");
-                    return puestoRepo.save(nuevo);
+                    return puestoTrabajoRepository.save(nuevo);
                 });
     }
+
     public Optional<PuestoTrabajoEntity> findByCategoriaNombreAndNivel(String nombreCategoria, String nombreNivel) {
-    Optional<CategoriaEntity> categoriaOpt = categoriaRepository.findByNombre(nombreCategoria);
-    Optional<NivelEntity> nivelOpt = nivelRepository.findByNombre(nombreNivel);
-    if (categoriaOpt.isEmpty() || nivelOpt.isEmpty()) return Optional.empty();
-    return puestoTrabajoRepository.findByCategoriaAndNivel(categoriaOpt.get(), nivelOpt.get());
-}
-
-
-   
+        Optional<CategoriaEntity> categoriaOpt = categoriaRepository.findByNombre(nombreCategoria);
+        Optional<NivelEntity> nivelOpt = nivelRepository.findByNombre(nombreNivel);
+        if (categoriaOpt.isEmpty() || nivelOpt.isEmpty())
+            return Optional.empty();
+        return puestoTrabajoRepository.findByCategoriaAndNivel(categoriaOpt.get(), nivelOpt.get());
+    }
 
 }

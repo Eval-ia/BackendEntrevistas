@@ -2,6 +2,7 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.PreguntaPersonalizadaEntity;
+import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
 import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IPreguntaPersonalizadaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class PreguntaPersonalizadaServiceImp implements IPreguntaPersonalizadaSe
     
     @Autowired
     private PreguntaPersonalizadaRepository preguntaPersonalizadaRepository;
+     @Autowired
+    private EntrevistaRepository entrevistaRepository;
 
     @Override
     public List<PreguntaPersonalizadaEntity> findAll() {
@@ -43,16 +46,16 @@ public class PreguntaPersonalizadaServiceImp implements IPreguntaPersonalizadaSe
         pregunta.setTexto(texto);
         pregunta.setEntrevista(entrevista);
 
-        return personalizadaRepository.save(pregunta);
+        return preguntaPersonalizadaRepository.save(pregunta);
     }
 
     @Override
     public List<PreguntaPersonalizadaEntity> listarPorEntrevista(Long idEntrevista) {
-        return personalizadaRepository.findByEntrevistaIdEntrevista(idEntrevista);
+        return preguntaPersonalizadaRepository.findByEntrevistaIdEntrevista(idEntrevista);
     }
 
     @Override
     public void eliminar(Long idPregunta) {
-        personalizadaRepository.deleteById(idPregunta);
+        preguntaPersonalizadaRepository.deleteById(idPregunta);
     }
 }

@@ -8,5 +8,6 @@ import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
 
 public interface CategoriaRepository extends JpaRepository<CategoriaEntity, Long> {
     Optional<CategoriaEntity> findByNombre(String nombre);
+    Optional<CategoriaEntity> findByNombreIgnoreCase(String nombre);
 
 }

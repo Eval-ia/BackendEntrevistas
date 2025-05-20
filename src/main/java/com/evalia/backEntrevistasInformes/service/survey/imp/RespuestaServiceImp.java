@@ -2,6 +2,9 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.RespuestaEntity;
+import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
+import com.evalia.backEntrevistasInformes.repository.PreguntaRepository;
 import com.evalia.backEntrevistasInformes.repository.RespuestaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.IRespuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,12 @@ public class RespuestaServiceImp implements IRespuestaService {
     
     @Autowired
     private RespuestaRepository respuestaRepository;
+    @Autowired
+    private PreguntaPersonalizadaRepository preguntaPersonalizadaRepository;
+    @Autowired
+    private PreguntaRepository preguntaRepository;
+    @Autowired
+    private EntrevistaRepository entrevistaRepository;
 
     @Override
     public List<RespuestaEntity> findAll() {
@@ -48,7 +57,7 @@ public class RespuestaServiceImp implements IRespuestaService {
             }
 
             if (r.getPreguntaPersonalizada() != null && r.getPreguntaPersonalizada().getIdPreguntaPersonalizada() != null) {
-                r.setPreguntaPersonalizada(personalizadaRepository.findById(r.getPreguntaPersonalizada().getIdPreguntaPersonalizada())
+                r.setPreguntaPersonalizada(preguntaPersonalizadaRepository.findById(r.getPreguntaPersonalizada().getIdPreguntaPersonalizada())
                         .orElse(null));
             }
 

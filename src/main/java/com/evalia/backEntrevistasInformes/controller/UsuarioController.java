@@ -1,4 +1,4 @@
-package com.evalia.backEntrevistasInformes.Controller;
+package com.evalia.backEntrevistasInformes.controller;
 
 // public package com.evalia.backEntrevistasInformes.controller;
 
