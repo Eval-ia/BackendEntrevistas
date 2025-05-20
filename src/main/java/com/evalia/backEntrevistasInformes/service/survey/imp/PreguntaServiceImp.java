@@ -33,4 +33,17 @@ public class PreguntaServiceImp implements IPreguntaService {
     public void deleteById(Long id) {
         preguntaRepository.deleteById(id);
     }
+    @Override
+    public List<PreguntaEntity> obtenerGenericas() {
+        return preguntaRepository.findByEsGenericaTrue();
+    }
+     @Override
+    public PreguntaEntity guardarPregunta(PreguntaEntity pregunta) {
+        return preguntaRepository.save(pregunta);
+    }
+
+     @Override
+    public List<PreguntaEntity> obtenerPorPuesto(Long idPuesto) {
+        return preguntaRepository.findByPuesto_IdPuesto(idPuesto);
+    }
 }

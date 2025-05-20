@@ -9,4 +9,8 @@ public interface IPreguntaPersonalizadaService {
     Optional<PreguntaPersonalizadaEntity> findById(Long id);
     PreguntaPersonalizadaEntity save(PreguntaPersonalizadaEntity preguntaPersonalizada);
     void deleteById(Long id);
+    void eliminar(Long idPregunta);
+    PreguntaPersonalizadaEntity guardar(String texto, Long idEntrevista);
+    List<PreguntaPersonalizadaEntity> listarPorEntrevista(Long idEntrevista);
+
 }

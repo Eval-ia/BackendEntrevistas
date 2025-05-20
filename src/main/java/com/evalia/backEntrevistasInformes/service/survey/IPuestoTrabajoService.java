@@ -9,4 +9,6 @@ public interface IPuestoTrabajoService {
     Optional<PuestoTrabajoEntity> findById(Long id);
     PuestoTrabajoEntity save(PuestoTrabajoEntity puestoTrabajo);
     void deleteById(Long id);
+    PuestoTrabajoEntity crearOPreexistente(String tecnologia, String nivel);
+
 }

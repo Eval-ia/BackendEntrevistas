@@ -9,4 +9,6 @@ public interface INivelService {
     Optional<NivelEntity> findById(Long id);
     NivelEntity save(NivelEntity nivel);
     void deleteById(Long id);
+    NivelEntity guardarNivel(String nombre);
+
 }

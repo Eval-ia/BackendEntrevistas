@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class EntrevistaServiceImp implements IEntrevistaService {
-    
+
     @Autowired
     private EntrevistaRepository entrevistaRepository;
 
@@ -32,5 +32,10 @@ public class EntrevistaServiceImp implements IEntrevistaService {
     @Override
     public void deleteById(Long id) {
         entrevistaRepository.deleteById(id);
+    }
+
+    @Override
+    public EntrevistaEntity crearEntrevista(EntrevistaEntity entrevista) {
+        return entrevistaRepository.save(entrevista);
     }
 }

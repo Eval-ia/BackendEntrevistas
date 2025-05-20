@@ -33,4 +33,41 @@ public class CategoriaServiceImp implements ICategoriaService {
     public void deleteById(Long id) {
         categoriaRepository.deleteById(id);
     }
+
+ @Override
+    public CategoriaEntity guardarCategoria(String nombre) {
+        return categoriaRepository.findByNombreIgnoreCase(nombre)
+                .orElseGet(() -> {
+                    CategoriaEntity nueva = new CategoriaEntity();
+                    nueva.setNombre(nombre);
+                    return categoriaRepository.save(nueva);
+                });
+    }
+
+    @Override
+    public List<CategoriaEntity> getAllCategorias() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllCategorias'");
+    }
+
+    @Override
+    public Optional<CategoriaEntity> findById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    @Override
+    public CategoriaEntity save(CategoriaEntity categoria) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+    }
+
+
+
 }

@@ -9,4 +9,6 @@ public interface IEntrevistaService {
     Optional<EntrevistaEntity> findById(Long id);
     EntrevistaEntity save(EntrevistaEntity entrevista);
     void deleteById(Long id);
+    EntrevistaEntity crearEntrevista(EntrevistaEntity entrevista);
+
 }

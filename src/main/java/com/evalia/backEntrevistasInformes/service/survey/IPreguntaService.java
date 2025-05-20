@@ -9,4 +9,8 @@ public interface IPreguntaService {
     Optional<PreguntaEntity> findById(Long id);
     PreguntaEntity save(PreguntaEntity pregunta);
     void deleteById(Long id);
+    PreguntaEntity guardarPregunta(PreguntaEntity pregunta);
+    List<PreguntaEntity> obtenerPorPuesto(Long idPuesto);
+    public List<PreguntaEntity> obtenerGenericas();
+
 }

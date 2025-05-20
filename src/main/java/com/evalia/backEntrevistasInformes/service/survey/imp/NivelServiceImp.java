@@ -33,4 +33,13 @@ public class NivelServiceImp implements INivelService {
     public void deleteById(Long id) {
         nivelRepository.deleteById(id);
     }
+    @Override
+    public NivelEntity guardarNivel(String nombre) {
+        return nivelRepository.findByNombreIgnoreCase(nombre)
+                .orElseGet(() -> {
+                    NivelEntity nuevo = new NivelEntity();
+                    nuevo.setNombre(nombre);
+                    return nivelRepository.save(nuevo);
+                });
+    }
 }

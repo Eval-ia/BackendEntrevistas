@@ -9,4 +9,6 @@ public interface ICategoriaService {
     Optional<CategoriaEntity> findById(Long id);
     CategoriaEntity save(CategoriaEntity categoria);
     void deleteById(Long id);
+    CategoriaEntity guardarCategoria(String nombre);
+
 }
