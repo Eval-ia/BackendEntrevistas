@@ -20,13 +20,7 @@ public class CategoriaEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria_tecnologia")
-<<<<<<< HEAD
-    private CategoriaTecnologiaEntity categoriaTecnologia;
-=======
-    private Categoria_Tecnologia categoriaTecnologia;
-<<<<<<< HEAD
 
-=======
->>>>>>> main
->>>>>>> 089c16cd28ab5e5d6cb867a56df3b063b8bea4e0
+    //private CategoriaTecnologiaEntity categoriaTecnologia;
+    private Categoria_Tecnologia categoriaTecnologia;
 }

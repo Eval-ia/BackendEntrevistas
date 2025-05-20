@@ -1,9 +1,11 @@
 package com.evalia.backEntrevistasInformes.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
 
-public interface nivelRepository extends JpaRepository<NivelEntity, Long> {
+import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface NivelRepository extends JpaRepository<NivelEntity, Long> {
+    Optional<NivelEntity> findByNombreIgnoreCase(String nombre);
 }
