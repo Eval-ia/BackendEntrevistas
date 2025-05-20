@@ -1,6 +1,6 @@
 INSERT IGNORE INTO `Nivel` (`id_nivel`, `nombre`) VALUES
 (1, 'Junior'),
-(2, 'Semi senior'),
+(2, 'Semi-senior'),
 (3, 'Senior');
 
 INSERT IGNORE INTO `puesto` (`id_puesto`, `descripcion`, `nombre`, `id_categoria`, `id_nivel`) VALUES

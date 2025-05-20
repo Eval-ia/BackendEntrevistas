@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PreguntaRespuestaDTO {
     private Long idPregunta;
-private String textoPreguntaPersonalizada; // NUEVO
-private String respuesta;
+    private String textoPreguntaPersonalizada; // NUEVO
+    private String respuesta;
 
 }
-

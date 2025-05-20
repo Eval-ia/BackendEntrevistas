@@ -19,4 +19,5 @@ public class CategoriaTecnologiaServiceImp implements ICategoriaTecnologiaServic
     public List<CategoriaTecnologiaEntity> getAllCategoriasTecnologias() {
         return categoriaTecnologiaRepository.findAll();
     }
+    
 }

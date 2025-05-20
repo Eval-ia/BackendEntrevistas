@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entrevista.EntrevistaFinalizadaDTO;
 import com.evalia.backEntrevistasInformes.service.entrevistas.IEntrevistasService;
 import com.evalia.backEntrevistasInformes.service.survey.ICategoriaTecnologiaService;
@@ -26,6 +27,7 @@ public class EntrevistasController {
 
     @PostMapping("/finalizar")
     public ResponseEntity<String> finalizarEntrevista(@RequestBody EntrevistaFinalizadaDTO dto) {
+         System.out.println("Finalizando entrevista...");
         String mensaje = entrevistaService.finalizarEntrevista(dto);
         return ResponseEntity.ok(mensaje);
     }

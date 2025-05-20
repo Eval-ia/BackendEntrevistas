@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Service
 public class RespuestaServiceImp implements IRespuestaService {
-    
+
     @Autowired
     private RespuestaRepository respuestaRepository;
     @Autowired
@@ -43,22 +43,31 @@ public class RespuestaServiceImp implements IRespuestaService {
     public void deleteById(Long id) {
         respuestaRepository.deleteById(id);
     }
+
     @Override
     public void guardarRespuestas(List<RespuestaEntity> respuestas) {
         for (RespuestaEntity r : respuestas) {
-            EntrevistaEntity entrevista = entrevistaRepository.findById(r.getEntrevista().getIdEntrevista())
-                    .orElseThrow(() -> new RuntimeException("Entrevista no encontrada"));
 
+            // ⚠️ Validación segura antes del findById
+            Long idEntrevista = (r.getEntrevista() != null) ? r.getEntrevista().getIdEntrevista() : null;
+            if (idEntrevista == null) {
+                throw new IllegalArgumentException("La respuesta no tiene entrevista válida");
+            }
+
+            EntrevistaEntity entrevista = entrevistaRepository.findById(idEntrevista)
+                    .orElseThrow(() -> new RuntimeException("Entrevista no encontrada"));
             r.setEntrevista(entrevista);
 
             if (r.getPregunta() != null && r.getPregunta().getIdPregunta() != null) {
-                r.setPregunta(preguntaRepository.findById(r.getPregunta().getIdPregunta())
-                        .orElse(null));
+                r.setPregunta(preguntaRepository.findById(r.getPregunta().getIdPregunta()).orElse(null));
             }
 
-            if (r.getPreguntaPersonalizada() != null && r.getPreguntaPersonalizada().getIdPreguntaPersonalizada() != null) {
-                r.setPreguntaPersonalizada(preguntaPersonalizadaRepository.findById(r.getPreguntaPersonalizada().getIdPreguntaPersonalizada())
-                        .orElse(null));
+            if (r.getPreguntaPersonalizada() != null
+                    && r.getPreguntaPersonalizada().getIdPreguntaPersonalizada() != null) {
+                r.setPreguntaPersonalizada(
+                        preguntaPersonalizadaRepository
+                                .findById(r.getPreguntaPersonalizada().getIdPreguntaPersonalizada())
+                                .orElse(null));
             }
 
             respuestaRepository.save(r);

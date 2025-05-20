@@ -48,10 +48,19 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
         // 1. Crear la EntrevistaEntity con los datos recibidos
         EntrevistaEntity entrevista = new EntrevistaEntity();
         entrevista.setFecha(LocalDate.now());
-        entrevista.setEntrevistador(usuarioRepository.findById(dto.getIdEntrevistador()).orElseThrow());
-        entrevista.setCandidato(usuarioRepository.findById(dto.getIdCandidato()).orElseThrow());
-        entrevista.setPuesto(puestoRepository.findById(dto.getIdPuesto()).orElseThrow());
-        entrevistaRepository.save(entrevista); // Necesario para generar ID
+
+        UsuarioEntity entrevistador = usuarioRepository.findById(dto.getIdEntrevistador())
+                .orElseThrow(() -> new RuntimeException("Entrevistador no encontrado"));
+
+        UsuarioEntity candidato = usuarioRepository.findById(dto.getIdCandidato())
+                .orElseThrow(() -> new RuntimeException("Candidato no encontrado"));
+
+        entrevista.setEntrevistador(entrevistador);
+        entrevista.setCandidato(candidato);
+        entrevista.setPuesto(puestoRepository.findById(dto.getIdPuesto())
+                .orElseThrow(() -> new RuntimeException("Puesto no encontrado")));
+
+        entrevistaRepository.save(entrevista); // Genera ID
 
         // 2. Guardar preguntas personalizadas (si hay)
         Map<String, PreguntaPersonalizadaEntity> preguntasMap = new HashMap<>();
@@ -66,13 +75,14 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
             }
         }
 
-        // 3. Guardar las respuestas
+        // 3. Guardar respuestas
         for (PreguntaRespuestaDTO respuestaDTO : dto.getRespuestas()) {
             RespuestaEntity respuesta = new RespuestaEntity();
             respuesta.setEntrevista(entrevista);
 
             if (respuestaDTO.getIdPregunta() != null) {
-                respuesta.setPregunta(preguntaRepository.findById(respuestaDTO.getIdPregunta()).orElse(null));
+                respuesta.setPregunta(preguntaRepository.findById(respuestaDTO.getIdPregunta())
+                        .orElse(null));
             }
 
             if (respuestaDTO.getTextoPreguntaPersonalizada() != null) {
@@ -85,31 +95,30 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
             respuestaRepository.save(respuesta);
         }
 
-        // 4. Llamar a la IA para generar informe
-        UsuarioEntity candidato = entrevista.getCandidato();
+        // 4. Generar informe con IA
         InformeGeneradoDTO resultado = iInformeEntrevistaService.generarInformeDesdeEntrevista(dto.getRespuestas());
 
-        candidato.setInforme(resultado.getInforme());
-        candidato.setFortalezas(resultado.getFortalezas());
-        candidato.setDebilidades(resultado.getDebilidades());
+        if (resultado != null) {
+            candidato.setInforme(resultado.getInforme());
+            candidato.setFortalezas(resultado.getFortalezas());
+            candidato.setDebilidades(resultado.getDebilidades());
+            usuarioRepository.saveAndFlush(candidato);
+        }
 
-        usuarioRepository.save(candidato);
-
-        // 6. Exportar a CSV y enviar a App2 (después de guardar el informe)
+        // 5. Exportar CSV
         List<UsuarioEntity> candidatosConInforme = Collections.singletonList(candidato);
-
-            // Ruta temporal para el CSV (puedes mejorar esto con una ruta configurable)
-            new File("temp").mkdirs();
+        new File("temp").mkdirs();
         String rutaCsv = "temp/candidato_" + candidato.getIdUsuario() + ".csv";
-
-            // Exportar CSV
         iInformeEntrevistaService.exportarCandidatosConInforme(candidatosConInforme, rutaCsv);
 
-            // Enviar a la App2
-        File archivoCsv = new File(rutaCsv);
-        iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
+        // 6. Enviar CSV a App2 (comentado)
+        /*
+         * File archivoCsv = new File(rutaCsv);
+         * iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
+         */
 
-        // 7. Mensaje de éxito
+        System.out.println("✅ Envío a App2 pendiente: CSV generado correctamente en " + rutaCsv);
+
         return "Entrevista finalizada y guardada correctamente";
     }
 
