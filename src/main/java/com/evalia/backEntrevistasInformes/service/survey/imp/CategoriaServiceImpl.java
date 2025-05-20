@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
-import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.CategoriaService;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class CategoriaServiceImpl implements CategoriaService {
 
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private categoriaRepository categoriaRepository;
 
     @Override
     public CategoriaEntity guardarCategoria(String nombre) {

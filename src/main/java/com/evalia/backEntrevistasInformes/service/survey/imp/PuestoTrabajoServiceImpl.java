@@ -3,9 +3,9 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 import com.evalia.backEntrevistasInformes.model.entity.CategoriaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.NivelEntity;
 import com.evalia.backEntrevistasInformes.model.entity.PuestoTrabajoEntity;
-import com.evalia.backEntrevistasInformes.repository.CategoriaRepository;
-import com.evalia.backEntrevistasInformes.repository.NivelRepository;
-import com.evalia.backEntrevistasInformes.repository.PuestoTrabajoRepository;
+import com.evalia.backEntrevistasInformes.repository.categoriaRepository;
+import com.evalia.backEntrevistasInformes.repository.nivelRepository;
+import com.evalia.backEntrevistasInformes.repository.puestoTrabajoRepository;
 import com.evalia.backEntrevistasInformes.service.survey.PuestoTrabajoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 public class PuestoTrabajoServiceImpl implements PuestoTrabajoService {
 
     @Autowired
-    private PuestoTrabajoRepository puestoRepo;
+    private puestoTrabajoRepository puestoRepo;
 
     @Autowired
-    private CategoriaRepository categoriaRepo;
+    private categoriaRepository categoriaRepo;
 
     @Autowired
-    private NivelRepository nivelRepo;
+    private nivelRepository nivelRepo;
 
     @Override
     public PuestoTrabajoEntity crearOPreexistente(String tecnologia, String nivel) {

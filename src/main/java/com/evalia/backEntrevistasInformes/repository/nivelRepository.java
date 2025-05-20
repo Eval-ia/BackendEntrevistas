@@ -6,6 +6,6 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface NivelRepository extends JpaRepository<NivelEntity, Long> {
+public interface nivelRepository extends JpaRepository<NivelEntity, Long> {
     Optional<NivelEntity> findByNombreIgnoreCase(String nombre);
 }

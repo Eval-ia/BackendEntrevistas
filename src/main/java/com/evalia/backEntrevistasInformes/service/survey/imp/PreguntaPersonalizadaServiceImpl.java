@@ -2,8 +2,8 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.PreguntaPersonalizadaEntity;
-import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
-import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
+import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.preguntaPersonalizadaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.PreguntaPersonalizadaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import java.util.List;
 public class PreguntaPersonalizadaServiceImpl implements PreguntaPersonalizadaService {
 
     @Autowired
-    private PreguntaPersonalizadaRepository personalizadaRepository;
+    private preguntaPersonalizadaRepository personalizadaRepository;
 
     @Autowired
-    private EntrevistaRepository entrevistaRepository;
+    private entrevistaRepository entrevistaRepository;
 
     @Override
     public PreguntaPersonalizadaEntity guardar(String texto, Long idEntrevista) {

@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
-import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
+import com.evalia.backEntrevistasInformes.repository.entrevistaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.EntrevistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class EntrevistaServiceImpl implements EntrevistaService {
 
     @Autowired
-    private EntrevistaRepository entrevistaRepository;
+    private entrevistaRepository entrevistaRepository;
 
     @Override
     public EntrevistaEntity crearEntrevista(EntrevistaEntity entrevista) {

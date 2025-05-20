@@ -1,7 +1,7 @@
 package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.PreguntaEntity;
-import com.evalia.backEntrevistasInformes.repository.PreguntaRepository;
+import com.evalia.backEntrevistasInformes.repository.preguntaRepository;
 import com.evalia.backEntrevistasInformes.service.survey.PreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class PreguntaServiceImpl implements PreguntaService {
 
     @Autowired
-    private PreguntaRepository preguntaRepository;
+    private preguntaRepository preguntaRepository;
 
     @Override
     public PreguntaEntity guardarPregunta(PreguntaEntity pregunta) {

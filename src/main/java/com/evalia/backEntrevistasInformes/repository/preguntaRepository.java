@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PreguntaRepository extends JpaRepository<PreguntaEntity, Long> {
+public interface preguntaRepository extends JpaRepository<PreguntaEntity, Long> {
     List<PreguntaEntity> findByEsGenericaTrue();
     List<PreguntaEntity> findByPuesto_IdPuesto(Long idPuesto);
 }

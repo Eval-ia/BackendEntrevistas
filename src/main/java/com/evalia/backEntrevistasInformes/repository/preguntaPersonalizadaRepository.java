@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PreguntaPersonalizadaRepository extends JpaRepository<PreguntaPersonalizadaEntity, Long> {
+public interface preguntaPersonalizadaRepository extends JpaRepository<PreguntaPersonalizadaEntity, Long> {
     List<PreguntaPersonalizadaEntity> findByEntrevistaIdEntrevista(Long idEntrevista);
 }
