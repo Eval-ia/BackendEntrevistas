@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/puestos")
-@CrossOrigin(origins = "http://localhost:5173")
 public class PuestoTrabajoController {
 
     @Autowired

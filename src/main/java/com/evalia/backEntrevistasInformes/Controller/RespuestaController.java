@@ -15,7 +15,6 @@ import com.evalia.backEntrevistasInformes.service.survey.RespuestaService;
 
 @RestController
 @RequestMapping("/api/respuestas")
-@CrossOrigin(origins = "http://localhost:5173")
 public class RespuestaController {
 
     @Autowired
