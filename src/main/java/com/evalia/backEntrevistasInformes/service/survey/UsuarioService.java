@@ -13,10 +13,6 @@ public interface UsuarioService {
     UsuarioEntity save(UsuarioEntity usuario);
     void deleteById(Long id);
     Optional<UsuarioEntity> findByNombreAndRol(String nombre, Rol rol);
-<<<<<<< HEAD:src/main/java/com/evalia/backEntrevistasInformes/service/survey/UsuarioService.java
-=======
-
     List<UsuarioEntity> buscarPorIds(List<Long> ids);
 
->>>>>>> ae34bfdbf3e4c946ab75e9d291395e5f68ab670a:src/main/java/com/evalia/backEntrevistasInformes/service/survey/IUsuarioService.java
 }

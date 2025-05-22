@@ -1,4 +1,4 @@
-<<<<<<< HEAD:src/main/java/com/evalia/backEntrevistasInformes/Controller/UsuarioController.java
+
 package com.evalia.backEntrevistasInformes.Controller;
 
 import com.evalia.backEntrevistasInformes.model.Rol;
@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-=======
-package com.evalia.backEntrevistasInformes.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,15 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.evalia.backEntrevistasInformes.model.Rol;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
-import com.evalia.backEntrevistasInformes.service.survey.IUsuarioService;
->>>>>>> ae34bfdbf3e4c946ab75e9d291395e5f68ab670a:src/main/java/com/evalia/backEntrevistasInformes/controller/UsuarioController.java
+
+
 
 @RestController
 @RequestMapping("/api/usuarios")
-<<<<<<< HEAD
-@CrossOrigin(origins = "http://localhost:5173")
-=======
->>>>>>> fcef254659bde8cd3078d5d75d8a4866ebd9166b
 public class UsuarioController {
 
     @Autowired
@@ -53,9 +47,6 @@ public class UsuarioController {
         return usuario.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-<<<<<<< HEAD:src/main/java/com/evalia/backEntrevistasInformes/Controller/UsuarioController.java
-    
-=======
 
     @PostMapping("/candidatos")
     public ResponseEntity<List<UsuarioEntity>> obtenerUsuariosPorIds(@RequestBody List<Long> ids) {
@@ -63,7 +54,6 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
->>>>>>> ae34bfdbf3e4c946ab75e9d291395e5f68ab670a:src/main/java/com/evalia/backEntrevistasInformes/controller/UsuarioController.java
     @PostMapping("/crear")
     public ResponseEntity<List<UsuarioEntity>> crearUsuarios(@RequestParam String entrevistador, @RequestParam String candidato) {
         UsuarioEntity ent = usuarioService.crearUsuario(entrevistador, Rol.ENTREVISTADOR);

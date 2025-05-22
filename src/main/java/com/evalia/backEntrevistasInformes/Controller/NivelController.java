@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/nivel")
-<<<<<<< HEAD
-@CrossOrigin(origins = "http://localhost:5173")
-=======
->>>>>>> fcef254659bde8cd3078d5d75d8a4866ebd9166b
 public class NivelController {
 
     @Autowired
