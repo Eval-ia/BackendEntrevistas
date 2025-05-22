@@ -50,4 +50,13 @@ public class UsuarioServiceImp implements UsuarioService {
     public Optional<UsuarioEntity> findByNombreAndRol(String nombre, Rol rol) {
         return usuarioRepository.findByNombreAndRol(nombre, rol);
     }
+<<<<<<< HEAD
+=======
+
+    @Override
+    public List<UsuarioEntity> buscarPorIds(List<Long> ids) {
+        return usuarioRepository.findByIdUsuarioIn(ids);
+    }
+
+>>>>>>> ae34bfdbf3e4c946ab75e9d291395e5f68ab670a
 }
