@@ -2,7 +2,11 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.Rol;
 import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
+<<<<<<< HEAD
 import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
+=======
+import com.evalia.backEntrevistasInformes.repository.usuarioRepository;
+>>>>>>> fcef254659bde8cd3078d5d75d8a4866ebd9166b
 import com.evalia.backEntrevistasInformes.service.survey.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
