@@ -14,7 +14,25 @@ public class NivelServiceImpl implements NivelService {
     @Autowired
     private NivelRepository nivelRepository;
 
+    @Override
+    public List<NivelEntity> findAll() {
+        return nivelRepository.findAll();
+    }
 
+    @Override
+    public Optional<NivelEntity> findById(Long id) {
+        return nivelRepository.findById(id);
+    }
+
+    @Override
+    public NivelEntity save(NivelEntity nivel) {
+        return nivelRepository.save(nivel);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        nivelRepository.deleteById(id);
+    }
     @Override
     public NivelEntity guardarNivel(String nombre) {
         return nivelRepository.findByNombreIgnoreCase(nombre)

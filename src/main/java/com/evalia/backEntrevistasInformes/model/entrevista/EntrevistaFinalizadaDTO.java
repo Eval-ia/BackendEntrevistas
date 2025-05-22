@@ -1,21 +1,21 @@
-// package com.evalia.backEntrevistasInformes.model.entrevista;
+package com.evalia.backEntrevistasInformes.model.entrevista;
 
-// import lombok.AllArgsConstructor;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// import java.util.List;
+import java.util.List;
 
-// import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaPersonalizadaDTO;
-// import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
+import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaPersonalizadaDTO;
+import com.evalia.backEntrevistasInformes.model.preguntas.PreguntaRespuestaDTO;
 
-// //@AllArgsConstructor
-// @NoArgsConstructor
-// @Data
-// public class EntrevistaFinalizadaDTO {
-//     private Long idEntrevistador;
-//     private Long idCandidato;
-//     private Long idPuesto;
-//     private List<PreguntaPersonalizadaDTO> preguntasPersonalizadas;
-//     private List<PreguntaRespuestaDTO> respuestas;
-// }
+//@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class EntrevistaFinalizadaDTO {
+    private Long idEntrevistador;
+    private Long idCandidato;
+    private Long idPuesto;
+    private List<PreguntaPersonalizadaDTO> preguntasPersonalizadas;
+    private List<PreguntaRespuestaDTO> respuestas;
+}

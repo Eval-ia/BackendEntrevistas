@@ -13,6 +13,25 @@ public class EntrevistaServiceImpl implements EntrevistaService {
     @Autowired
     private EntrevistaRepository entrevistaRepository;
 
+    @Override
+    public List<EntrevistaEntity> findAll() {
+        return entrevistaRepository.findAll();
+    }
+
+    @Override
+    public Optional<EntrevistaEntity> findById(Long id) {
+        return entrevistaRepository.findById(id);
+    }
+
+    @Override
+    public EntrevistaEntity save(EntrevistaEntity entrevista) {
+        return entrevistaRepository.save(entrevista);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        entrevistaRepository.deleteById(id);
+    }
 
     @Override
     public EntrevistaEntity crearEntrevista(EntrevistaEntity entrevista) {

@@ -14,9 +14,32 @@ import java.util.List;
 public class PreguntaServiceImpl implements PreguntaService {
 
     @Autowired
-
     private PreguntaRepository preguntaRepository;
+
     @Override
+    public List<PreguntaEntity> findAll() {
+        return preguntaRepository.findAll();
+    }
+
+    @Override
+    public Optional<PreguntaEntity> findById(Long id) {
+        return preguntaRepository.findById(id);
+    }
+
+    @Override
+    public PreguntaEntity save(PreguntaEntity pregunta) {
+        return preguntaRepository.save(pregunta);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        preguntaRepository.deleteById(id);
+    }
+    @Override
+    public List<PreguntaEntity> obtenerGenericas() {
+        return preguntaRepository.findByEsGenericaTrue();
+    }
+     @Override
     public PreguntaEntity guardarPregunta(PreguntaEntity pregunta) {
         return preguntaRepository.save(pregunta);
     }
@@ -24,10 +47,5 @@ public class PreguntaServiceImpl implements PreguntaService {
      @Override
     public List<PreguntaEntity> obtenerPorPuesto(Long idPuesto) {
         return preguntaRepository.findByPuesto_IdPuesto(idPuesto);
-    }
-
-     @Override
-    public List<PreguntaEntity> obtenerGenericas() {
-        return preguntaRepository.findByEsGenericaTrue();
     }
 }

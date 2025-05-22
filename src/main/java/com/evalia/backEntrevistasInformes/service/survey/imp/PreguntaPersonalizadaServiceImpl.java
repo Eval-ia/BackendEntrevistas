@@ -15,12 +15,30 @@ import java.util.List;
 public class PreguntaPersonalizadaServiceImpl implements PreguntaPersonalizadaService {
 
     @Autowired
-    private PreguntaPersonalizadaRepository personalizadaRepository;
-
-    @Autowired
+    private PreguntaPersonalizadaRepository preguntaPersonalizadaRepository;
+     @Autowired
     private EntrevistaRepository entrevistaRepository;
 
     @Override
+    public List<PreguntaPersonalizadaEntity> findAll() {
+        return preguntaPersonalizadaRepository.findAll();
+    }
+
+    @Override
+    public Optional<PreguntaPersonalizadaEntity> findById(Long id) {
+        return preguntaPersonalizadaRepository.findById(id);
+    }
+
+    @Override
+    public PreguntaPersonalizadaEntity save(PreguntaPersonalizadaEntity preguntaPersonalizada) {
+        return preguntaPersonalizadaRepository.save(preguntaPersonalizada);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        preguntaPersonalizadaRepository.deleteById(id);
+    }
+     @Override
     public PreguntaPersonalizadaEntity guardar(String texto, Long idEntrevista) {
         EntrevistaEntity entrevista = entrevistaRepository.findById(idEntrevista)
                 .orElseThrow(() -> new RuntimeException("Entrevista no encontrada"));
@@ -29,17 +47,17 @@ public class PreguntaPersonalizadaServiceImpl implements PreguntaPersonalizadaSe
         pregunta.setTexto(texto);
         pregunta.setEntrevista(entrevista);
 
-        return personalizadaRepository.save(pregunta);
+        return preguntaPersonalizadaRepository.save(pregunta);
     }
 
     @Override
     public List<PreguntaPersonalizadaEntity> listarPorEntrevista(Long idEntrevista) {
-        return personalizadaRepository.findByEntrevistaIdEntrevista(idEntrevista);
+        return preguntaPersonalizadaRepository.findByEntrevistaIdEntrevista(idEntrevista);
     }
 
     @Override
     public void eliminar(Long idPregunta) {
-        personalizadaRepository.deleteById(idPregunta);
+        preguntaPersonalizadaRepository.deleteById(idPregunta);
     }
 
 }
