@@ -44,7 +44,7 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
     IInformeEntrevistaService iInformeEntrevistaService;
 
     @Transactional
-    public String finalizarEntrevista(EntrevistaFinalizadaDTO dto) {
+    public Long finalizarEntrevista(EntrevistaFinalizadaDTO dto) {
         // 1. Crear la EntrevistaEntity con los datos recibidos
         EntrevistaEntity entrevista = new EntrevistaEntity();
         entrevista.setFecha(LocalDate.now());
@@ -119,7 +119,8 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
 
         System.out.println("✅ Envío a App2 pendiente: CSV generado correctamente en " + rutaCsv);
 
-        return "Entrevista finalizada y guardada correctamente";
+        return entrevista.getIdEntrevista();
+
     }
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.evalia.backEntrevistasInformes.model.entity.RespuestaEntity;
+import com.evalia.backEntrevistasInformes.model.respuesta.RespuestaDTO;
 import com.evalia.backEntrevistasInformes.service.survey.IRespuestaService;
 
 @RestController
@@ -20,8 +21,9 @@ public class RespuestaController {
     private IRespuestaService respuestaService;
 
     @PostMapping("/guardar")
-    public ResponseEntity<?> guardarRespuestas(@RequestBody List<RespuestaEntity> respuestas) {
-        respuestaService.guardarRespuestas(respuestas);
+    public ResponseEntity<?> guardarRespuestas(@RequestBody List<RespuestaDTO> respuestas) {
+        respuestaService.guardarRespuestasDesdeDTO(respuestas);
         return ResponseEntity.ok("Respuestas guardadas correctamente");
     }
+
 }

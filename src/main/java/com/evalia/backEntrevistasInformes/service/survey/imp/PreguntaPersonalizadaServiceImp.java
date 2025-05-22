@@ -28,10 +28,10 @@ public class PreguntaPersonalizadaServiceImp implements IPreguntaPersonalizadaSe
         return preguntaPersonalizadaRepository.findById(id);
     }
 
-    @Override
-    public PreguntaPersonalizadaEntity save(PreguntaPersonalizadaEntity preguntaPersonalizada) {
-        return preguntaPersonalizadaRepository.save(preguntaPersonalizada);
-    }
+    // @Override
+    // public PreguntaPersonalizadaEntity save(PreguntaPersonalizadaEntity preguntaPersonalizada) {
+    //     return preguntaPersonalizadaRepository.save(preguntaPersonalizada);
+    // }
 
     @Override
     public void deleteById(Long id) {

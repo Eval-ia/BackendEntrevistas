@@ -2,6 +2,7 @@ package com.evalia.backEntrevistasInformes.service.survey.imp;
 
 import com.evalia.backEntrevistasInformes.model.entity.EntrevistaEntity;
 import com.evalia.backEntrevistasInformes.model.entity.RespuestaEntity;
+import com.evalia.backEntrevistasInformes.model.respuesta.RespuestaDTO;
 import com.evalia.backEntrevistasInformes.repository.EntrevistaRepository;
 import com.evalia.backEntrevistasInformes.repository.PreguntaPersonalizadaRepository;
 import com.evalia.backEntrevistasInformes.repository.PreguntaRepository;
@@ -70,6 +71,29 @@ public class RespuestaServiceImp implements IRespuestaService {
                                 .orElse(null));
             }
 
+            respuestaRepository.save(r);
+        }
+    }
+
+    @Override
+    public void guardarRespuestasDesdeDTO(List<RespuestaDTO> dtos) {
+        for (RespuestaDTO dto : dtos) {
+            RespuestaEntity r = new RespuestaEntity();
+
+            EntrevistaEntity entrevista = entrevistaRepository.findById(dto.getEntrevistaId())
+                    .orElseThrow(() -> new RuntimeException("Entrevista no encontrada"));
+            r.setEntrevista(entrevista);
+
+            if (dto.getIdPregunta() != null) {
+                r.setPregunta(preguntaRepository.findById(dto.getIdPregunta()).orElse(null));
+            }
+
+            if (dto.getIdPreguntaPersonalizada() != null) {
+                r.setPreguntaPersonalizada(
+                        preguntaPersonalizadaRepository.findById(dto.getIdPreguntaPersonalizada()).orElse(null));
+            }
+
+            r.setTextoRespuesta(dto.getTextoRespuesta());
             respuestaRepository.save(r);
         }
     }

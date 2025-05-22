@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RespuestaDTO {
+    private Long entrevistaId;
     private Long idPregunta;
     private Long idPreguntaPersonalizada;
     private String textoRespuesta;
