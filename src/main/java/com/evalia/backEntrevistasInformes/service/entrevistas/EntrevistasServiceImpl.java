@@ -24,6 +24,8 @@ import com.evalia.backEntrevistasInformes.repository.PuestoTrabajoRepository;
 import com.evalia.backEntrevistasInformes.repository.RespuestaRepository;
 import com.evalia.backEntrevistasInformes.repository.UsuarioRepository;
 import com.evalia.backEntrevistasInformes.service.ia.informe.IInformeEntrevistaService;
+import com.evalia.backEntrevistasInformes.util.PdfGeneratorService;
+
 import jakarta.transaction.Transactional;
 
 @Service
@@ -42,6 +44,9 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
     PreguntaPersonalizadaRepository preguntaPersonalizadaRepository;
     @Autowired
     IInformeEntrevistaService iInformeEntrevistaService;
+
+    @Autowired
+    PdfGeneratorService pdfGeneratorService;
 
     @Transactional
     public String finalizarEntrevista(EntrevistaFinalizadaDTO dto) {
@@ -118,6 +123,12 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
          */
 
         System.out.println("✅ Envío a App2 pendiente: CSV generado correctamente en " + rutaCsv);
+
+
+        
+        String rutaPdf = pdfGeneratorService.generarPdf(entrevista, dto.getRespuestas());
+        System.out.println("✅ Informe PDF generado en: " + rutaPdf);
+
 
         return "Entrevista finalizada y guardada correctamente";
     }
