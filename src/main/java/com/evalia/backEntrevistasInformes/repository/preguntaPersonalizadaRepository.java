@@ -1,9 +1,10 @@
 package com.evalia.backEntrevistasInformes.repository;
 
+import com.evalia.backEntrevistasInformes.model.entity.PreguntaPersonalizadaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.evalia.backEntrevistasInformes.model.entity.PreguntaPersonalizadaEntity;
+import java.util.List;
 
-public interface preguntaPersonalizadaRepository extends JpaRepository<PreguntaPersonalizadaEntity, Long>{
-
+public interface PreguntaPersonalizadaRepository extends JpaRepository<PreguntaPersonalizadaEntity, Long> {
+    List<PreguntaPersonalizadaEntity> findByEntrevistaIdEntrevista(Long idEntrevista);
 }

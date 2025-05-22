@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 089c16cd28ab5e5d6cb867a56df3b063b8bea4e0
 INSERT IGNORE INTO `Nivel` (`id_nivel`, `nombre`) VALUES
 (1, 'Junior'),
 (2, 'Semi senior'),
