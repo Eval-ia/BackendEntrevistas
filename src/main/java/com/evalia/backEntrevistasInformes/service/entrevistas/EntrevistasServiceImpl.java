@@ -49,7 +49,7 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
     PdfGeneratorService pdfGeneratorService;
 
     @Transactional
-    public String finalizarEntrevista(EntrevistaFinalizadaDTO dto) {
+    public Long finalizarEntrevista(EntrevistaFinalizadaDTO dto) {
         // 1. Crear la EntrevistaEntity con los datos recibidos
         EntrevistaEntity entrevista = new EntrevistaEntity();
         entrevista.setFecha(LocalDate.now());
@@ -117,10 +117,10 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
         iInformeEntrevistaService.exportarCandidatosConInforme(candidatosConInforme, rutaCsv);
 
         // 6. Enviar CSV a App2 (comentado)
-        /*
-         * File archivoCsv = new File(rutaCsv);
-         * iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
-         */
+    
+        File archivoCsv = new File(rutaCsv);
+        iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
+        
 
         System.out.println("✅ Envío a App2 pendiente: CSV generado correctamente en " + rutaCsv);
 
@@ -130,7 +130,8 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
         System.out.println("✅ Informe PDF generado en: " + rutaPdf);
 
 
-        return "Entrevista finalizada y guardada correctamente";
+        return entrevista.getIdEntrevista();
+
     }
 
 }

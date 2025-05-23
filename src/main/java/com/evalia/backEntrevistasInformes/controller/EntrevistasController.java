@@ -25,10 +25,10 @@ public class EntrevistasController {
     private ICategoriaTecnologiaService categoriaTecnologiaService;
 
     @PostMapping("/finalizar")
-    public ResponseEntity<String> finalizarEntrevista(@RequestBody EntrevistaFinalizadaDTO dto) {
-         System.out.println("Finalizando entrevista...");
-        String mensaje = entrevistaService.finalizarEntrevista(dto);
-        return ResponseEntity.ok(mensaje);
+    public ResponseEntity<Long> finalizarEntrevista(@RequestBody EntrevistaFinalizadaDTO dto) {
+        System.out.println("Finalizando entrevista...");
+        Long idEntrevista = entrevistaService.finalizarEntrevista(dto);
+        return ResponseEntity.ok(idEntrevista);
     }
 
     @GetMapping("/ping")
