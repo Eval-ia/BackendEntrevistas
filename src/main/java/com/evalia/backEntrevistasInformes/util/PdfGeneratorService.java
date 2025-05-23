@@ -55,6 +55,20 @@ public class PdfGeneratorService {
                 document.add(new Paragraph(" "));
             }
 
+
+            document.add(new Paragraph("INFORME", seccionFont));
+            document.add(new Paragraph(" "));
+
+            String fortalezas = entrevista.getCandidato().getFortalezas();
+            String debilidades = entrevista.getCandidato().getDebilidades();
+
+            document.add(new Paragraph("Fortalezas:", preguntaFont));
+            document.add(new Paragraph(fortalezas != null ? fortalezas : "Ninguna", respuestaFont));
+            document.add(new Paragraph(" "));
+
+            document.add(new Paragraph("Debilidades:", preguntaFont));
+            document.add(new Paragraph(debilidades != null ? debilidades : "Ninguna", respuestaFont));
+            document.add(new Paragraph(" "));
             document.close();
 
         } catch (Exception e) {
