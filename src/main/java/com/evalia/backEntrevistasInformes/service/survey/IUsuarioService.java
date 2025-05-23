@@ -16,6 +16,6 @@ public interface IUsuarioService {
 
     Optional<UsuarioEntity> findByNombreAndRol(String nombre, Rol rol);
 
-    List<UsuarioEntity> buscarPorIds(List<Long> ids);
+    List<UsuarioEntity> buscarCandidatosPorIds(List<Long> ids);
 
 }

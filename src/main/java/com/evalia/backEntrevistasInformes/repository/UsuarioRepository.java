@@ -11,5 +11,5 @@ import com.evalia.backEntrevistasInformes.model.entity.UsuarioEntity;
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity,Long> {
     List<UsuarioEntity> findByInformeIsNotNull();
     Optional<UsuarioEntity> findByNombreAndRol(String nombre, Rol rol);
-    List<UsuarioEntity> findByIdUsuarioIn(List<Long> ids);
+    List<UsuarioEntity> findByIdUsuarioInAndRol(List<Long> ids, Rol rol);
 }
