@@ -112,10 +112,10 @@ public class EntrevistasServiceImpl implements IEntrevistasService {
         iInformeEntrevistaService.exportarCandidatosConInforme(candidatosConInforme, rutaCsv);
 
         // 6. Enviar CSV a App2 (comentado)
-        /*
-         * File archivoCsv = new File(rutaCsv);
-         * iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
-         */
+    
+        File archivoCsv = new File(rutaCsv);
+        iInformeEntrevistaService.enviarCsvParaRanking(archivoCsv);
+        
 
         System.out.println("✅ Envío a App2 pendiente: CSV generado correctamente en " + rutaCsv);
 
