@@ -41,8 +41,8 @@ public class UsuarioServiceImp implements IUsuarioService {
     }
 
     @Override
-    public List<UsuarioEntity> buscarPorIds(List<Long> ids) {
-        return usuarioRepository.findByIdUsuarioIn(ids);
+    public List<UsuarioEntity> buscarCandidatosPorIds(List<Long> ids) {
+        return usuarioRepository.findByIdUsuarioInAndRol(ids, Rol.CANDIDATO);
     }
 
 }

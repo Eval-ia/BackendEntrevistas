@@ -37,7 +37,7 @@ public class UsuarioController {
 
     @PostMapping("/candidatos")
     public ResponseEntity<List<UsuarioEntity>> obtenerUsuariosPorIds(@RequestBody List<Long> ids) {
-        List<UsuarioEntity> usuarios = usuarioService.buscarPorIds(ids);
+        List<UsuarioEntity> usuarios = usuarioService.buscarCandidatosPorIds(ids);
         return ResponseEntity.ok(usuarios);
     }
 
