@@ -31,7 +31,7 @@ public class PdfGeneratorService {
 
             Font tituloFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18);
             Font seccionFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
-            Font preguntaFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
+            Font preguntaFont = FontFactory.getFont(FontFactory.HELVETICA, 14);
             Font respuestaFont = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.ITALIC);
 
             
