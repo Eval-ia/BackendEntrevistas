@@ -103,7 +103,7 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
             writer.write('\uFEFF'); // BOM para Excel
 
-            String sep = ";"; // o ";"
+            String sep = ","; // o ";"
 
             // Cabecera
             writer.println(String.join(sep,
@@ -115,8 +115,8 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
 
                 if (entrevista != null && usuario.getInforme() != null && !usuario.getInforme().isBlank()) {
                     String[] fila = {
-                            "\"" + usuario.getIdUsuario() + "\"",
-                            "\"" + entrevista.getPuesto().getNombre().replace("\"", "\"\"") + "\"",
+                            usuario.getIdUsuario().toString(),
+                            entrevista.getPuesto().getNombre(),
                             "\"" + usuario.getFortalezas().replace("\"", "\"\"") + "\"",
                             "\"" + usuario.getDebilidades().replace("\"", "\"\"") + "\"",
                             "\"" + usuario.getInforme().replace("\"", "\"\"") + "\""
@@ -144,7 +144,7 @@ public class InformeEntrevistaServiceImpl implements IInformeEntrevistaService {
             HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
             // ! PONER LA URL DEL ENDPOINT BIEN
-            String url = urlApp2 + "/cargar-informes";
+            String url = urlApp2 + "/procesar_csv_completo";
             return restTemplate.postForObject(url, requestEntity, String.class);
 
         } catch (Exception e) {
